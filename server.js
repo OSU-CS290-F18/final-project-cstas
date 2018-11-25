@@ -5,7 +5,6 @@
  *
  */
 const bodyParser = require('body-parser');
-const times = require('./times.json');
 const express = require('express');
 const handlebars = require('handlebars');
 const exphbs = require('express-handlebars');
@@ -54,19 +53,32 @@ app.use(bodyParser.json());
 var context = require("./context.json");
 context["event"] = "*Event*";
 
-app.get("/event/:month/:week/:year/:time", function(req, res, next){
+app.get("/event/:month/:year/:time", function(req, res, next){
     //should search for event here
-    db.collection('event').find({}).toArray(function(err, eventDocs){
-    	var event_pass = {};
+    var time = parseInt(req.params.time);
+    var year = parseInt(req.params.year);
+    var month = parseInt(req.params.month);
+    db.collection('event').find({"time":time, "year":year, "month":month}).toArray(function(err, eventDocs){
+        console.log(eventDocs);
+        var event_pass = {};
 	event_pass['event'] = eventDocs;
         res.status(200).render('events', event_pass);
     });
 });
 
+app.get("/:month/:week/:year", function(req, res, next){
+    var week = parseInt(req.params.week);
+    var year = parseInt(req.params.year);
+    var month = parseInt(req.params.month);
+    renderCalendar(week, year, month, res, next);
+});
+
 function renderCalendar(week, year, month, res, next){
-    db.collection('event').find({}).toArray(function(err, event){
-        cal = new c.Calendar(1);
-   	cal = cal.monthDays(year, month);
+    var w2; var y2; var m2;
+    db.collection('event').find({"month":month, "year":year}).toArray(function(err, event){
+    cal = new c.Calendar(1);
+    cal = cal.monthDays(year, month);
+    w2 = cal.length-1;
    	if(cal.length > week){
 		var contextClone = JSON.parse(JSON.stringify(context));
        		cal = cal[week];
@@ -78,22 +90,36 @@ function renderCalendar(week, year, month, res, next){
                     			}
                 		}
             		}
-        	}
+            }
+            contextClone["local"] = "/event/"+String(month)+'/'+String(year)+'/';            
+            if(week == w2){
+                w2 = 0;
+                if(month == 11){y2 = year + 1; m2 = 0}
+                else{m2 = month+1; y2 = year;}
+            }
+            else{w2 = week+1; y2=year; m2=month}
+            contextClone["next"] = '/' + String(m2) + '/' + String(w2) + '/' + String(y2);
+            
+            if(week == 0){
+                if(month == 0){y2 = year - 1; m2 = 11}
+                else{m2 = month - 1; y2 = year;}
+                cal = new c.Calendar(1);
+                cal = cal.monthDays(y2, m2);
+                w2 = cal.length -1;
+            }
+            else{w2 = week-1; y2=year; m2=month}
+            contextClone["last"] = '/' + String(m2) + '/' + String(w2) + '/' + String(y2);
         	res.status(200).render('calendar_app', {'context': contextClone});
     	}
     	else{
+            delete cal;
         	console.log("bad");
         	next();
     	}
     });
 }
 
-app.get("/:month/:week/:year", function(req, res, next){
-    var week = parseInt(req.params.week);
-    var year = parseInt(req.params.year);
-    var month = parseInt(req.params.month);
-    renderCalendar(week, year, month, res, next);
-});
+
 
 //serve webpage, will need updating
 app.get("/", function(req, res, next){

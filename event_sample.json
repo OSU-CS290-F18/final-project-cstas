@@ -1,0 +1,8 @@
+{
+    "name": "birtday",      //string
+    "time": 7,              //int
+    "time12": "07:00 AM",   //string
+    "month": 2,             //int
+    "year": 2017,           //int
+    "day": 1                //int
+}
