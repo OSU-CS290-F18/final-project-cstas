@@ -289,3 +289,6 @@ footer::before{
 
 }
 
+.requestVar{
+    visibility: hidden;
+}

@@ -1,7 +1,7 @@
 {{#each day}}
 <div class="day-column {{this}} col">
     {{#each ../times}}
-    <div class="grid-box {{../this}}" id="{{../this}}_{{this.time}}">
+    <div class="grid-box" id="{{../this}}_{{this.time}}" value="{{timeConvert this.time}}">
         {{ifDay ../this this ../../event}}
     </div>
     {{/each}}
