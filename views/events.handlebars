@@ -1,11 +1,23 @@
-{{#unless event}}
-    <link href="util-styles.css" rel="stylesheet">
 
+{{#if base}}
+<link href="{{base}}/util-styles.css" rel="stylesheet">
+{{else}}
+<link href="util-styles.css" rel="stylesheet">
+{{/if}}
+
+{{#unless event}}
     <div class="single-headline-container">
         <h1 class="single-headline">No Event :'(</h1>
     </div>
 {{/unless}}
-    
+
+{{! If event is defined so should bass. Please define it as correct relative path!}}
+{{#if event}}
+<link href="{{bass}}/event-styles.css" rel="stylesheet">
+<div class="full-container">
     {{#each event}}
         {{> single_event}}
     {{/each}}
+</div>
+{{/if}}
+
