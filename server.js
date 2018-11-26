@@ -63,7 +63,8 @@ app.get("/event/:month/:year/:time", function(req, res, next){
     db.collection('event').find({"time":time, "year":year, "month":month}).toArray(function(err, eventDocs){
         console.log(eventDocs);
 		var event = eventDocs;
-        res.status(200).render('events', event);
+		console.log(event);
+        res.status(200).render('events', {event});
     });
 });
 
@@ -185,7 +186,7 @@ app.post('/event/:month/:day/:year/:time', function(req, res, next){
 	db.collection('event').insertOne({'name': name, 'time': time, 'time12': time12, 'month': month, 'year': year, 'day': day});
 	res.status(200).send('Post added successfully');
 });
-
+ 
 
 /*
  Set Up Use Debugging Events
