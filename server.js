@@ -37,6 +37,8 @@ MongoClient.connect(mongoUrl, function (err, client){
 	app.listen(port, function(){
 		console.log("Server listening on port", port);	
 	});
+
+	debug_Database();
 });
 
 //Set up Tristan's weird Templating
@@ -56,13 +58,12 @@ context["event"] = "*Event*";
 app.get("/event/:month/:year/:time", function(req, res, next){
     //should search for event here
     var time = parseInt(req.params.time);
-    var year = parseInt(req.params.year);
-    var month = parseInt(req.params.month);
+	var year = parseInt(req.params.year);
+	var month = parseInt(req.params.month);
     db.collection('event').find({"time":time, "year":year, "month":month}).toArray(function(err, eventDocs){
         console.log(eventDocs);
-        var event_pass = {};
-	event_pass['event'] = eventDocs;
-        res.status(200).render('events', event_pass);
+		var event = eventDocs;
+        res.status(200).render('events', event);
     });
 });
 
@@ -184,3 +185,18 @@ app.post('/event/:month/:day/:year/:time', function(req, res, next){
 	db.collection('event').insertOne({'name': name, 'time': time, 'time12': time12, 'month': month, 'year': year, 'day': day});
 	res.status(200).send('Post added successfully');
 });
+
+
+/*
+ Set Up Use Debugging Events
+ -- Tristan H
+*/
+function debug_Database(){
+	if(process.env.DEBUG){
+		db.collection('event').drop();
+		db.collection('event').insertOne({'name': "Killin Time", 'time': 11, 'time12': "11:00 AM", 'month': 10, 'year': 2018, 'day': 3});
+		db.collection('event').insertOne({'name': "Porking Time", 'time': 14, 'time12': "02:00 PM", 'month': 11, 'year': 2018, 'day': 6});
+		db.collection('event').insertOne({'name': "Another Time Long Ago", 'time': 15, 'time12': "03:00 PM", 'month': 9, 'year': 2019, 'day': 17});
+		db.collection('event').insertOne({'name': "Disney Land", "time": 17, 'time12': "05:00 PM", 'month': 1, 'year': 2019, 'day': 1});
+	}
+}

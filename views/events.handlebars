@@ -1,11 +1,17 @@
-{{#unless event}}
-    <link href="util-styles.css" rel="stylesheet">
+<link href="/util-styles.css" rel="stylesheet">
 
+{{#unless event}}
     <div class="single-headline-container">
         <h1 class="single-headline">No Event :'(</h1>
     </div>
 {{/unless}}
-    
+
+{{#if event}}
+<link href="/event-styles.css" rel="stylesheet">
+<div class="full-container">
     {{#each event}}
         {{> single_event}}
     {{/each}}
+</div>
+{{/if}}
+
