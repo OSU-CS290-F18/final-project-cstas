@@ -58,11 +58,10 @@ context["event"] = "*Event*";
 app.get("/event/:month/:year/:time", function(req, res, next){
     //should search for event here
     var time = parseInt(req.params.time);
-    var year = parseInt(req.params.year);
+	var year = parseInt(req.params.year);
 	var month = parseInt(req.params.month);
     db.collection('event').find({"time":time, "year":year, "month":month}).toArray(function(err, eventDocs){
         console.log(eventDocs);
-        pass.event_pass = {};
 		var event = eventDocs;
         res.status(200).render('events', event);
     });
