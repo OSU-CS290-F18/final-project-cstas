@@ -7,19 +7,19 @@
                 <div class="bar day-container" id="daylist-container">
                     <ul class="uilist" id="daylist">
                         <li class= "list-day splitter" id="initial-split"><span class="day blank-day"></span></li>
-                        <li class="list-day mon"><span class="day mon">Mon</span></li>
+                        <li class="list-day mon"><span class="day mon">Mon</span> <span class='bigNum'>{{context.weekDates.Mon}}</span></li>
                         <li class= "list-day splitter"><span class="day blank-day"></span></li>
-                        <li class="list-day tue"><span class="day tue">Tue</span></li>
+                        <li class="list-day tue"><span class="day tue">Tue</span> <span class='bigNum'>{{context.weekDates.Tue}}</span></li>
                         <li class= "list-day splitter"><span class="day blank-day"></span></li>
-                        <li class="list-day wed"><span class="day wed">Wed</span></li>
+                        <li class="list-day wed"><span class="day wed">Wed</span> <span class='bigNum'>{{context.weekDates.Wed}}</span></li>
                         <li class= "list-day splitter"><span class="day blank-day"></span></li>
-                        <li class="list-day thu"><span class="day thu">Thu</span></li>
+                        <li class="list-day thu"><span class="day thu">Thu</span> <span class='bigNum'>{{context.weekDates.Thu}}</span></li>
                         <li class= "list-day splitter"><span class="day blank-day"></span></li>
-                        <li class="list-day fri"><span class="day fri">Fri</span></li>
+                        <li class="list-day fri"><span class="day fri">Fri</span> <span class='bigNum'>{{context.weekDates.Fri}}</span></li>
                         <li class= "list-day splitter"><span class="day blank-day"></span></li>
-                        <li class="list-day sat"><span class="day sat">Sat</span></li>
+                        <li class="list-day sat"><span class="day sat">Sat</span> <span class='bigNum'>{{context.weekDates.Sat}}</span></li>
                         <li class= "list-day splitter"><span class="day blank-day"></span></li>
-                        <li class="list-day sun"><span class="day sun">Sun</span></li>
+                        <li class="list-day sun"><span class="day sun">Sun</span> <span class='bigNum'>{{context.weekDates.Sun}}</span></li>
                     </ul>
                 </div>
                 <div class="columns" id="collumn-chart">
@@ -30,9 +30,10 @@
                 </div>
                 <div class = "button_housing">
                     <a href="{{context.last}}" class="cycle-button prev_button">&laquo; Prev</a>  
-                    <label><span class="dates-text" id="current-Dates">These Are Dates</span></label>
+                    <label><span class="dates-text" id="current-Dates">{{context.weekDates.Mon}} &laquo;---{{context.month}}---&raquo; {{context.weekDates.Sun}}</span></label>
                     <a href="{{context.next}}" class="cycle-button next_button">Next &raquo;</a>
                 </div> 
+                <div class = "year-disp">{{context.year}}</div>
             </div>
         </div>
 
