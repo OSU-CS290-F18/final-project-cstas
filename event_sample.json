@@ -4,5 +4,6 @@
     "time12": "07:00 AM",   //string
     "month": 2,             //int
     "year": 2017,           //int
-    "day": 1                //int
+    "day": "Tue",           //string
+    "date": 1               //int
 }

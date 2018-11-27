@@ -1,7 +1,9 @@
 <div class="event-container" id="event-container">
     <label class="event-detail event-name">{{name}}</label>
     <label class="event-detail event-time">Time: {{time12}}</label>
-    <label class="event-detail event-month">Month: {{month}}</label>
-    <label class="event-detail event-day">Date: {{day}}</label>
-    <label class="event-detail event-year">Year: {{year}}</label>
+    <label class="event-detail event-month">Month: {{monthPrint month}}</label>
+    <label class="event-detail event-day">Date: {{dayPrint date day}}</label>
+    <label class="event-detail event-year">Year: {{yearPrint year}}</label>
+
+    <button class="deleteButton" name="{{name}}" day="{{day}}"> Delete Event </button>
 </div>

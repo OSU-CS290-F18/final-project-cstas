@@ -245,9 +245,10 @@ main{
 
 .dates-text{
     font-family: 'Courier New', Courier, monospace;
-    font-size: 16px;
-    font-weight: 6;
+    font-size: 25px;
     color: black;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 /* Button End */
@@ -291,4 +292,16 @@ footer::before{
 
 .requestVar{
     visibility: hidden;
+}
+
+.bigNum{
+    padding: 8px;
+    font-size: 25px;
+    font-weight: 300;
+}
+
+.year-disp{
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
 }

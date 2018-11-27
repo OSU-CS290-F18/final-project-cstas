@@ -33,5 +33,14 @@
         "Fri",
         "Sat",
         "Sun"
-]
+    ],
+    "weekDates": {
+        "Mon": "",
+        "Tue": "",
+        "Wed": "",
+        "Thu": "",
+        "Fri": "",
+        "Sat": "",
+        "Sun": ""
+    }
 }
