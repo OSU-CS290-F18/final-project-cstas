@@ -1,7 +1,7 @@
 function startSend(j){
     if(j.target.getAttribute('class') == 'grid-box'){ 
         var time = String(j.target.getAttribute("value"));
-        var requestUrl = String(document.querySelector(".requestVar").textContent)+ String(j.target.getAttribute('day'))+ '/' + time;
+        var requestUrl = String(document.querySelector(".requestVar").textContent)+ String(j.target.getAttribute('date')) + '/' + time + '/' + String(j.target.getAttribute('day'));
         window.location.href = requestUrl;
     }
 }

@@ -56,13 +56,14 @@ app.use(bodyParser.json());
 var context = require("./context.json");
 context["event"] = "*Event*";
 
-app.get("/event/:month/:year/:date/:time", function(req, res, next){
-    //should search for event here
+app.get("/event/:month/:year/:date/:time/:day", function(req, res, next){
+    
     var date = parseInt(req.params.date);
     var time = parseInt(req.params.time);
 	var year = parseInt(req.params.year);
-	var month = parseInt(req.params.month);
-    db.collection('event').find({$or: [{"time":time, "year":year, "month":month, "date": date}, {"year":0, "time":time}]}).toArray(function(err, eventDocs){
+    var month = parseInt(req.params.month);
+    day = req.params.day;
+    db.collection('event').find({$or: [{"time":time, "year":year, "month":month, "date": date}, {"year":0, "time":time, $or: [{'day':day}, {'day': "All"}]}]}).toArray(function(err, eventDocs){
         var event = eventDocs;
         if(date == 0){event = null;}
         res.status(200).render('events', {event});
@@ -94,7 +95,7 @@ function renderCalendar(week, year, month, res, next){
             contextClone['year'] = year;
       	 	for(var j = 0; j < event.length; j++){
                 for(var i = 0; i < cal.length; i++){            
-                    if((cal[i] == event[j]["date"] && cal[i] != 0) || (cal[i] != 0 && event[j]['day'] == contextClone['day'][i] && event[j]['year'] == 0)){
+                    if(event[j]['day'] == 'All' || (cal[i] == event[j]["date"] && cal[i] != 0) || (cal[i] != 0 && event[j]['day'] == contextClone['day'][i] && event[j]['year'] == 0)){
                             contextClone["times"][event[j]["time"]][contextClone["day"][i]] = true;
                     }
                 }
@@ -196,7 +197,7 @@ app.post('/event/:month/:date/:year/:time', function(req, res, next){
 });
 
 
-app.delete('/event/:month/:year/:day/:time/delete', function(req, res, next){
+app.delete('/event/:month/:year/:day/:time/:day/delete', function(req, res, next){
     var day = req.body.day;
     var time = parseInt(req.params.time);    
     var name = req.body.name;
@@ -205,7 +206,7 @@ app.delete('/event/:month/:year/:day/:time/delete', function(req, res, next){
     console.log(time);
     console.log(name);
 	//Now update the database
-	db.collection('event').deleteOne({'name': name, 'time': time, 'day': day});
+	db.collection('event').deleteOne({'name': name, 'time': time, $or: [{'day':day},{'day': "All"}]});
 	res.status(200).send('Post added successfully');
 });
  
@@ -224,5 +225,6 @@ function debug_Database(){
 		db.collection('event').insertOne({'name': "Another Time Long Ago", 'time': 15, 'time12': "03:00 PM", 'month': 9, 'year': 2019, 'date': 17, 'day': "Thu"});
         db.collection('event').insertOne({'name': "Disney Land", "time": 17, 'time12': "05:00 PM", 'month': 1, 'year': 2019, 'date': 1, 'day': "Fri"});
         db.collection('event').insertOne({'name': "Repeat", "time": 12, 'time12': "01:00 PM", 'month': 15, 'year': 0, 'date': 0, 'day': "Fri"});
+        db.collection('event').insertOne({'name': "Repeat", "time": 2, 'time12': "01:00 PM", 'month': 15, 'year': 0, 'date': 0, 'day': "All"});
 	}
 }
