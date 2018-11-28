@@ -95,7 +95,7 @@ function renderCalendar(week, year, month, res, next){
             contextClone['year'] = year;
       	 	for(var j = 0; j < event.length; j++){
                 for(var i = 0; i < cal.length; i++){            
-                    if(event[j]['day'] == 'All' || (cal[i] == event[j]["date"] && cal[i] != 0) || (cal[i] != 0 && event[j]['day'] == contextClone['day'][i] && event[j]['year'] == 0)){
+                    if(((event[j]['day'] == 'All' || cal[i] == event[j]["date"]) && cal[i] != 0) || (cal[i] != 0 && event[j]['day'] == contextClone['day'][i] && event[j]['year'] == 0)){
                             contextClone["times"][event[j]["time"]][contextClone["day"][i]] = true;
                     }
                 }
@@ -211,7 +211,7 @@ app.delete('/event/:month/:year/:day/:time/:day/delete', function(req, res, next
 });
  
 
-/*
+/*                                                                          
  Set Up Use Debugging Events
  -- Tristan H
 */
