@@ -1,3 +1,4 @@
+//sample event
 {
     "name": "birtday",      //string
     "time": 7,              //int

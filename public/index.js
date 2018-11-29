@@ -1,36 +1,80 @@
+/*
+ *  Index.js
+ *  contains client side js to handle ADD, DELETE, and dynamic redirects
+ *  Authors: Ryan Kennedy, Tyler Titsworth
+ *  Created: 11/20/2018
+ */
+
+
+/* 
+ *  Grabs date information from the the clicked target if it is a grid box and redirects the user to the proper event page 
+ */
 function startSend(j){
     if(j.target.getAttribute('class') == 'grid-box'){ 
         var time = String(j.target.getAttribute("value"));
-        var requestUrl = String(document.querySelector(".requestVar").textContent)+ String(j.target.getAttribute('date')) + '/' + time + '/' + String(j.target.getAttribute('day'));
-        window.location.href = requestUrl;
-    }
-}
+        var date = String(j.target.getAttribute('date'));                           //grabs vars from the html
+        var day = String(j.target.getAttribute('day'));
+        var urlBase = String(document.querySelector(".requestVar").textContent);
 
-function deleteElem(j){
-    
-    if(j.target.getAttribute('class') == 'deleteButton'){ 
-        console.log(j.target.getAttribute('name'));
-        var request = new XMLHttpRequest();
-        var requestUrl = window.location.pathname;
-        request.open('DELETE', requestUrl + '/delete');
-        request.setRequestHeader('Content-Type', 'application/json');
-        var bodyObj = {};
-        bodyObj["name"] = String(j.target.getAttribute('name'));
-        bodyObj['day'] = String(j.target.getAttribute('day'));
-        
-        var body = JSON.stringify(bodyObj);
-        console.log(body);
-        
-        request.addEventListener('load', function(event){
-            window.location.href = document.referrer;
-        });
-        request.send(body);
-        
-        console.log("ran");
+        var requestUrl = urlBase + date + '/' + time + '/' + day;                   //set up request url
+        window.location.href = requestUrl;                                          //redirect user
         j.stopPropagation();
     }
 }
 
+/*
+ *  Sends DELETE request for an event whos delete button was clicked using metadata from the button 
+ */
+function deleteElem(j){
+    if(j.target.getAttribute('class') == 'deleteButton'){               //if its the delete button
+        var request = new XMLHttpRequest();
+        var requestUrl = window.location.pathname;                      //creates new request using the page URL
+        request.open('DELETE', requestUrl + '/delete');                 //opens the delete request
+        request.setRequestHeader('Content-Type', 'application/json');   
+        
+        var bodyObj = {};
+        bodyObj["name"] = String(j.target.getAttribute('name'));        //sets up body object with attribute variables from button
+        bodyObj['day'] = String(j.target.getAttribute('day'));
+        
+        var body = JSON.stringify(bodyObj);                             
+        
+        request.addEventListener('load', function(event){               
+            if(event.target.status === 200){                        
+                window.location.href = document.referrer;               //if delete goes through redirects the user to the page they came from      
+            }
+            else{
+                alert('Error, event not deleted');                      //else drops an error
+            }
+        });
+        request.send(body);
+        j.stopPropagation();                                            //sends and stops propogation
+    }
+}
+
+
+//TYLER... USE THIS
+
+/*
+var request = new XMLHttpRequest();
+var requestUrl = '/event/' + someMonth + '/' + someDay + '/' + someYear + '/' + someTime;
+request.open('POST', requestUrl);
+var bodyObj = {
+    name: someName
+    day: someDay
+};
+var body = JSON.stringify(bodyObj);
+request.setRequestHeader('Content-Type', 'application/json');
+request.addEventListener('load', function(event){
+	if(!event.target.status == 200){alert('bad');}
+});
+request.send(body);
+
+//Simply replace someMonth, someDay, someYear, someTime, and someName with the actual user input in the modal when
+//asking the user what event they would like to create
+*/
+
+
+//======================================== Button setup =============================================//
 var deleteButton = document.querySelector(".deleteButton");
 if(deleteButton){deleteButton.addEventListener('click', deleteElem);}
 

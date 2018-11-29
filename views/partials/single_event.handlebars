@@ -1,3 +1,4 @@
+<!-- Event data html template -->
 <div class="event-container" id="event-container">
     <label class="event-detail event-name">{{name}}</label>
     <label class="event-detail event-time">Time: {{time12}}</label>
@@ -5,5 +6,6 @@
     <label class="event-detail event-day">Date: {{dayPrint date day}}</label>
     <label class="event-detail event-year">Year: {{yearPrint year}}</label>
 
+    <!-- Delete button and metadata for event deletion -->
     <button class="deleteButton" name="{{name}}" day="{{day}}"> Delete Event </button>
 </div>

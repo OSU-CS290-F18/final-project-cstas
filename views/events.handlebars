@@ -1,17 +1,23 @@
+<!-- Events Page html template -->
 <link href="/util-styles.css" rel="stylesheet">
 
+<!-- Case for if there are no events on this date-->
 {{#unless event}}
     <div class="single-headline-container">
         <h1 class="single-headline">No Event :'(</h1>
     </div>
 {{/unless}}
 
+<!-- If there are events print each of them -->
 {{#if event}}
-<link href="/event-styles.css" rel="stylesheet">
-<div class="full-container">
-    {{#each event}}
-        {{> single_event}}
-    {{/each}}
-</div>
+    <!-- Event Styles -->
+    <link href="/event-styles.css" rel="stylesheet">
+
+    <!-- prints events -->
+    <div class="full-container">
+        {{#each event}}
+            {{> single_event}}
+        {{/each}}
+    </div>
 {{/if}}
 
