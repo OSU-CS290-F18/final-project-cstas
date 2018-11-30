@@ -51,15 +51,93 @@ function deleteElem(j){
     }
 }
 
+function checkCreate()
+{
+	var title = document.getElementById('post-title-input').value;
+	var time1 = document.getElementById('post-time1-input').value;
+  	var time2 = document.getElementById('post-time2-input').value;
 
-//TYLER... USE THIS
+  	if (!title || !time1 || !time2) 
+	{
+  		alert("You must fill in all of the fields!");
+  	} 
+	else
+	{
+    		allPosts.push({
+      		title: title,
+      		Start Time: time1,
+      		End Time: time2,
+      		Weekly: repeat
+    	});
+	closeModal();
+}
 
-/*
+function addEvent()
+{
+	//info for the url.
+	var time1 = document.getElementById('post-time1-input').value;
+	var time2 = document.getElementById('post-time2-input').value;
+  	var repeat = document.querySelector('#post-repeat-input input:checked').value;
+	var someMonth = time1.getMonth();
+	var someDay = time1.getDate();
+	var someYear = time1.getFullYear();
+	if(repeat)
+	{
+		someYear = 0;
+		time1.getFullYear() = 0;
+	}
+	var someTime = time1.getTime();
+	var title = document.getElementById('post-title-input').value;
+	//creating div for insertion
+	var eventDiv = document.createElement('div');
+ 	eventDiv.classList.add('post');
+ 	eventDiv.setAttribute('data-title', title);
+ 	eventDiv.setAttribute('data-time1', time1);
+ 	eventDiv.setAttribute('data-time2', time2);
+ 	eventDiv.setAttribute('data-repeat', repeat);
+	//Create inner event-contents div and add to event div
+	var eventContentsDiv = document.createElement('div);
+	eventContentsDiv.classList.add('event-contents');
+	eventDiv.appendChild(eventContentsDiv);
+	//create post-info-container div and add to post-contents
+	var eventInfoContainerDiv = document.createElement('div');
+  	eventInfoContainerDiv.classList.add('event-info-container');
+	eventContentsDiv.appendChild(eventInfoContainerDiv);
+ 
+  	var eventLink = document.createElement('a');
+  	eventLink.classList.add('post-title');
+  	eventLink.href = '#';
+  	eventLink.textContent = title;
+  	eventInfoContainerDiv.appendChild(eventLink);
+	
+	var spaceText1 = document.createTextNode(' ');
+	postInfoContainerDiv.appendChild(spaceText1);
+
+  	var eventtime1span = document.createElement('span');
+  	eventtime1span.classList.add('post-time1');
+  	eventtime1span.textContent = time1.toString();
+  	eventInfoContainerDiv.appendChild(eventtime1span);
+
+	var spaceText2 = document.createTextNode(' ');
+	postInfoContainerDiv.appendChild(spaceText2);
+
+	var eventtime2span = document.createElement('span');
+  	eventtime2span.classList.add('post-time1');
+  	eventtime2span.textContent = time2.toString();
+  	eventInfoContainerDiv.appendChild(eventtime2span);
+	//add the new post element into DOM
+	/*
+		Function should align to grid properly, TODO
+	*/
+	
+	closeModal();
+}
+
 var request = new XMLHttpRequest();
 var requestUrl = '/event/' + someMonth + '/' + someDay + '/' + someYear + '/' + someTime;
 request.open('POST', requestUrl);
 var bodyObj = {
-    name: someName
+    title: title,
     day: someDay
 };
 var body = JSON.stringify(bodyObj);
@@ -69,12 +147,30 @@ request.addEventListener('load', function(event){
 });
 request.send(body);
 
-//Simply replace someMonth, someDay, someYear, someTime, and someName with the actual user input in the modal when
-//asking the user what event they would like to create
-*/
+function closeModal() 
+{
+	//reset all the inputs
+	document.getElementById("post-title-input").value = "";
+	document.getElementById("post-time1-input").value = "";
+	document.getElementById("post-time2-input").value = "";
+  	var checkrepeat = document.querySelector('#post-repeat-input input[checked]');
+ 	checkrepeat.checked = true;
+	//add div to hidden
+	document.getElementById("add-button").classList.add('hidden');
+	document.getElementById("modal-backdrop").classList.add('hidden');
+}
 
 
 //======================================== Button setup =============================================//
+var addButton = document.querySelector(".addButton");
+if(addButton){addButton.addEventListener('click', addEvent();}
+					 
+var addAccept = document.querySelector('.addAccept);
+if(addAccept){addAccept.addEventListener('click', checkCreate();}
+
+var addCancel = document.querySelector(".modal-cancel");
+if(addCancel){addCancel.addEventListener('click', closeModal();}
+
 var deleteButton = document.querySelector(".deleteButton");
 if(deleteButton){deleteButton.addEventListener('click', deleteElem);}
 
