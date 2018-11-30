@@ -305,3 +305,6 @@ footer::before{
     justify-content: center;
     font-size: 25px;
 }
+.hidden{
+	display: none;
+}

@@ -65,15 +65,23 @@ function checkCreate()
 	{
     		allPosts.push({
       		title: title,
-      		Start Time: time1,
-      		End Time: time2,
-      		Weekly: repeat
-    	});
+      		time1: time1,
+      		time2: time2,
+      		repeat: repeat
+    		})
+	};
 	closeModal();
+}
+
+function openModal()
+{
+	document.getElementById("add-button").classList.remove('hidden');
+	document.getElementById("modal-backdrop").classList.remove('hidden');
 }
 
 function addEvent()
 {
+	openModal();
 	//info for the url.
 	var time1 = document.getElementById('post-time1-input').value;
 	var time2 = document.getElementById('post-time2-input').value;
@@ -88,6 +96,7 @@ function addEvent()
 	}
 	var someTime = time1.getTime();
 	var title = document.getElementById('post-title-input').value;
+	urlRequest();	
 	//creating div for insertion
 	var eventDiv = document.createElement('div');
  	eventDiv.classList.add('post');
@@ -96,7 +105,7 @@ function addEvent()
  	eventDiv.setAttribute('data-time2', time2);
  	eventDiv.setAttribute('data-repeat', repeat);
 	//Create inner event-contents div and add to event div
-	var eventContentsDiv = document.createElement('div);
+	var eventContentsDiv = document.createElement('div');
 	eventContentsDiv.classList.add('event-contents');
 	eventDiv.appendChild(eventContentsDiv);
 	//create post-info-container div and add to post-contents
@@ -122,7 +131,7 @@ function addEvent()
 	postInfoContainerDiv.appendChild(spaceText2);
 
 	var eventtime2span = document.createElement('span');
-  	eventtime2span.classList.add('post-time1');
+  	eventtime2span.classList.add('post-time2');
   	eventtime2span.textContent = time2.toString();
   	eventInfoContainerDiv.appendChild(eventtime2span);
 	//add the new post element into DOM
@@ -133,19 +142,22 @@ function addEvent()
 	closeModal();
 }
 
-var request = new XMLHttpRequest();
-var requestUrl = '/event/' + someMonth + '/' + someDay + '/' + someYear + '/' + someTime;
-request.open('POST', requestUrl);
-var bodyObj = {
-    title: title,
-    day: someDay
-};
-var body = JSON.stringify(bodyObj);
-request.setRequestHeader('Content-Type', 'application/json');
-request.addEventListener('load', function(event){
-	if(!event.target.status == 200){alert('bad');}
-});
-request.send(body);
+function urlRequest()
+{
+	var request = new XMLHttpRequest();
+	var requestUrl = '/event/' + someMonth + '/' + someDay + '/' + someYear + '/' + someTime;
+	request.open('POST', requestUrl);
+	var bodyObj = {
+	    title: title,
+	    day: someDay
+	};
+	var body = JSON.stringify(bodyObj);
+	request.setRequestHeader('Content-Type', 'application/json');
+	request.addEventListener('load', function(event){
+		if(!event.target.status == 200){alert('bad');}
+	});
+	request.send(body);
+}
 
 function closeModal() 
 {
@@ -163,16 +175,17 @@ function closeModal()
 
 //======================================== Button setup =============================================//
 var addButton = document.querySelector(".addButton");
-if(addButton){addButton.addEventListener('click', addEvent();}
+if(addButton){addButton.addEventListener('click', addEvent);}
 					 
-var addAccept = document.querySelector('.addAccept);
-if(addAccept){addAccept.addEventListener('click', checkCreate();}
+var addAccept = document.querySelector('.addAccept');
+if(addAccept){addAccept.addEventListener('click', checkCreate);}
 
 var addCancel = document.querySelector(".modal-cancel");
-if(addCancel){addCancel.addEventListener('click', closeModal();}
+if(addCancel){addCancel.addEventListener('click', closeModal);}
+
+var grids = document.querySelector(".columns");
+if(grids){grids.addEventListener('click', startSend);}
 
 var deleteButton = document.querySelector(".deleteButton");
 if(deleteButton){deleteButton.addEventListener('click', deleteElem);}
 
-var grids = document.querySelector(".columns");
-if(grids){grids.addEventListener("click", startSend);}
