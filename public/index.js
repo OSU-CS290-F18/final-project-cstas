@@ -65,7 +65,7 @@ function checkCreate()
   	} 
 	else
 	{
-    		allPosts.push({
+    		allPosts.push({  // This was templatized for me, can we verify this is correct?
       		title: title,
       		time1: time1,
       		time2: time2,
