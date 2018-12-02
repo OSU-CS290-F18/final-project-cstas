@@ -75,8 +75,10 @@ function checkCreate()
 
 function openModal()
 {
-	document.getElementById("add-button").classList.remove('hidden');
-	document.getElementById("modal-backdrop").classList.remove('hidden');
+	rm = document.getElementById("add-button");
+	rm.classList.remove('hidden');
+	rm = document.getElementById("modal-backdrop");
+	rm.classList.remove('hidden');
 }
 
 function addEvent()
