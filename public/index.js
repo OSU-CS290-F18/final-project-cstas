@@ -33,7 +33,7 @@ function deleteElem(j){
         request.setRequestHeader('Content-Type', 'application/json');   
         
         var bodyObj = {};
-        bodyObj["name"] = String(j.target.getAttribute('name'));        //sets up body object with attribute variables from button
+        bodyObj["name"] = String(j.target.getAttribute("name"));        //sets up body object with attribute variables from button
         bodyObj['day'] = String(j.target.getAttribute('day'));
         
         var body = JSON.stringify(bodyObj);                             
@@ -68,8 +68,8 @@ function checkCreate()
       		time1: time1,
       		time2: time2,
       		repeat: repeat
-    		})
-	};
+    		});
+	}
 	closeModal();
 }
 
@@ -85,14 +85,13 @@ function addEvent()
 	//info for the url.
 	var time1 = document.getElementById('post-time1-input').value;
 	var time2 = document.getElementById('post-time2-input').value;
-  	var repeat = document.querySelector('#post-repeat-input input:checked').value;
+  var repeat = document.querySelector('#post-repeat-input input:checked').value;
 	var someMonth = time1.getMonth();
 	var someDay = time1.getDate();
 	var someYear = time1.getFullYear();
 	if(repeat)
 	{
-		someYear = 0;
-		time1.getFullYear() = 0;
+		time1.setFullYear(0);
 	}
 	var someTime = time1.getTime();
 	var title = document.getElementById('post-title-input').value;
@@ -154,7 +153,7 @@ function urlRequest()
 	var body = JSON.stringify(bodyObj);
 	request.setRequestHeader('Content-Type', 'application/json');
 	request.addEventListener('load', function(event){
-		if(!event.target.status == 200){alert('bad');}
+		if(!(event.target.status) == 200){alert('bad');}
 	});
 	request.send(body);
 }
@@ -174,7 +173,7 @@ function closeModal()
 
 
 //======================================== Button setup =============================================//
-var addButton = document.querySelector(".addButton");
+var addButton = document.querySelector(".add-Button");
 if(addButton){addButton.addEventListener('click', addEvent);}
 					 
 var addAccept = document.querySelector('.addAccept');
