@@ -127,7 +127,7 @@ function addEvent()
   	eventInfoContainerDiv.appendChild(eventLink);
 	
 	var spaceText1 = document.createTextNode(' ');
-	EventInfoContainerDiv.appendChild(spaceText1);
+	eventInfoContainerDiv.appendChild(spaceText1);
 
   	var eventtime1span = document.createElement('span');
   	eventtime1span.classList.add('post-time1');
@@ -135,7 +135,7 @@ function addEvent()
   	eventInfoContainerDiv.appendChild(eventtime1span);
 
 	var spaceText2 = document.createTextNode(' ');
-	EventInfoContainerDiv.appendChild(spaceText2);
+	eventInfoContainerDiv.appendChild(spaceText2);
 
 	var eventtime2span = document.createElement('span');
   	eventtime2span.classList.add('post-time2');
