@@ -33,7 +33,7 @@ function deleteElem(j){
         request.setRequestHeader('Content-Type', 'application/json');   
         
         var bodyObj = {};
-        bodyObj["name"] = String(j.target.getAttribute('name'));        //sets up body object with attribute variables from button
+        bodyObj["name"] = String(j.target.getAttribute("name"));        //sets up body object with attribute variables from button
         bodyObj['day'] = String(j.target.getAttribute('day'));
         
         var body = JSON.stringify(bodyObj);                             
@@ -50,7 +50,9 @@ function deleteElem(j){
         j.stopPropagation();                                            //sends and stops propogation
     }
 }
-
+/*
+ * Verifies all fields have been filled in the add Event Button before pushing each of the variables.
+ */
 function checkCreate()
 {
 	var title = document.getElementById('post-title-input').value;
@@ -63,42 +65,45 @@ function checkCreate()
   	} 
 	else
 	{
-    		allPosts.push({
+    		allPosts.push({  // This was templatized for me, can we verify this is correct?
       		title: title,
       		time1: time1,
       		time2: time2,
       		repeat: repeat
-    		})
-	};
+    		});
+	}
 	closeModal();
 }
-
+/*
+ * Opens the Modal for the add Event Button.
+ */
 function openModal()
 {
-	rm = document.getElementById("add-button");
+	var rm = document.getElementById("add-button");
 	rm.classList.remove('hidden');
 	rm = document.getElementById("modal-backdrop");
 	rm.classList.remove('hidden');
 }
-
+/*
+ * Adds an event after doing some variable manipulation for the URL, calls the functions to open and close modal inbetween.
+ */
 function addEvent()
 {
 	openModal();
 	//info for the url.
 	var time1 = document.getElementById('post-time1-input').value;
 	var time2 = document.getElementById('post-time2-input').value;
-  	var repeat = document.querySelector('#post-repeat-input input:checked').value;
+  var repeat = document.querySelector('#post-repeat-input input:checked').value;
 	var someMonth = time1.getMonth();
 	var someDay = time1.getDate();
 	var someYear = time1.getFullYear();
 	if(repeat)
 	{
-		someYear = 0;
-		time1.getFullYear() = 0;
+		time1.setFullYear(0);
 	}
 	var someTime = time1.getTime();
 	var title = document.getElementById('post-title-input').value;
-	urlRequest();	
+	urlRequest(someMonth, someDay, someYear, someTime);	
 	//creating div for insertion
 	var eventDiv = document.createElement('div');
  	eventDiv.classList.add('post');
@@ -122,7 +127,7 @@ function addEvent()
   	eventInfoContainerDiv.appendChild(eventLink);
 	
 	var spaceText1 = document.createTextNode(' ');
-	postInfoContainerDiv.appendChild(spaceText1);
+	eventInfoContainerDiv.appendChild(spaceText1);
 
   	var eventtime1span = document.createElement('span');
   	eventtime1span.classList.add('post-time1');
@@ -130,7 +135,7 @@ function addEvent()
   	eventInfoContainerDiv.appendChild(eventtime1span);
 
 	var spaceText2 = document.createTextNode(' ');
-	postInfoContainerDiv.appendChild(spaceText2);
+	eventInfoContainerDiv.appendChild(spaceText2);
 
 	var eventtime2span = document.createElement('span');
   	eventtime2span.classList.add('post-time2');
@@ -141,10 +146,12 @@ function addEvent()
 		Function should align to grid properly, TODO
 	*/
 	
-	closeModal();
+	//closeModal();
 }
-
-function urlRequest()
+/*
+ * Sets the URL for a new event.
+ */
+function urlRequest(someMonth, someDay, someYear, someTime)
 {
 	var request = new XMLHttpRequest();
 	var requestUrl = '/event/' + someMonth + '/' + someDay + '/' + someYear + '/' + someTime;
@@ -156,11 +163,13 @@ function urlRequest()
 	var body = JSON.stringify(bodyObj);
 	request.setRequestHeader('Content-Type', 'application/json');
 	request.addEventListener('load', function(event){
-		if(!event.target.status == 200){alert('bad');}
+		if(!(event.target.status) == 200){alert('bad');}
 	});
 	request.send(body);
 }
-
+/*
+ * Closes the MODAL and clears each of the fields.
+ */
 function closeModal() 
 {
 	//reset all the inputs
@@ -176,7 +185,7 @@ function closeModal()
 
 
 //======================================== Button setup =============================================//
-var addButton = document.querySelector(".addButton");
+var addButton = document.querySelector(".add-Button");
 if(addButton){addButton.addEventListener('click', addEvent);}
 					 
 var addAccept = document.querySelector('.addAccept');
