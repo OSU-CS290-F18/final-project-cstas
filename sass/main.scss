@@ -5,28 +5,50 @@
  *
  */
 
+/* Environment Variables And good old Sass Stuff. */
+$text-font: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+$header-font: Arial, Helvetica, san-serif; 
+$mono: 'Courier New', Courier, monospace;
+$main-color: #230523;
+$header-color: #FFFFFF;
+$off-text-color:  #e47637;
+$off-text-color1: #a6b9db;
+$border-color: #5f2a5f;
 
-/* Header */
-.bar{
+$gridbox-color: #d87cd033;
+$gridbox-color-on: #d87dd099;
+
+$background-color: #d8c4f0;
+$background-color1: #440a44;
+$background-color2: #5f2a5f;
+
+
+%flex_box{
     display: flex;
     align-items: center;
     justify-content: center;
+}
 
+
+
+/* Header */
+.bar{
+    @extend %flex_box;
     min-width: 900px;
     height: 120px;
     border-radius: 10px;
 }
 
 .header{
-    background-color: #440a44;
+    background-color: $background-color1;
     min-width: 940px;
     height: 120px;
 }
 
 h1{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: $text-font;
     font-size: 72px;
-    color: #FFFFFF;
+    color: $header-color;
 }
 
 /* Aside */
@@ -34,11 +56,11 @@ h1{
 /* Main */
 main{
     min-width: 940px;
-    background-color: #dccbf0;
+    background-color: $background-color;
 }
 /* Month Lists Bar */
 .month-container{
-    background-color: #5f2a5f;
+    background-color: $background-color2;
     height: 60px;
     
 }
@@ -54,13 +76,13 @@ main{
 }
 
 .month{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: #e47637;
+    font-family: $text-font;
+    color: $off-text-color;
     font-size: 16px;
 }
 
 .month:hover{
-    color: #FFFFFF;
+    color: $text-font;
     cursor: pointer;
     font-weight: bold;
 }
@@ -71,14 +93,14 @@ main{
 /* App Container and Unordered lists*/
 
 .container{
-    display: flex;
+    @extend %flex_box;
     min-width: 1400px;
     min-height: 1000px;
     max-width: 100%;
     margin: 0px 20px;
     padding: 0px;
 
-    justify-content: center;
+    align-items: initial;
 }
 
 .inner-div{
@@ -87,7 +109,7 @@ main{
 }
 
 .button_housing{
-    display: flex;
+    @extend %flex_box;
     justify-content: center;
     padding: 15px;
 }
@@ -133,7 +155,7 @@ main{
     height: 800px;
     width: 100px;
 
-    border: solid #5f2a5f;
+    border: solid $border-color;
     border-top-width: 1px;
     border-right-width: 1px;
     border-bottom-width: 1px;
@@ -149,9 +171,9 @@ main{
     height: 31.3px;
     width: 97%;
 
-    background-color: rgba(216, 124, 208, 0.2);
+    background-color: $gridbox-color;
 
-    border: solid #5f2a5f;
+    border: solid $border-color;
     border-top-width: 1px;
     border-right-width: 1px;
     border-bottom-width: 1px;
@@ -161,7 +183,7 @@ main{
 }
 
 .grid-box:hover{
-    background-color: rgba(216, 124, 208, 0.6);
+    background-color:$gridbox-color-on;
     cursor: pointer;
 }
 /* Collumns End */
@@ -188,7 +210,7 @@ main{
 .time-text{
     display: inline-block;
     font-size: 16px;
-    color: #e47637;
+    color: $off-text-color;
 }
 
 .AM::after{
@@ -225,12 +247,12 @@ main{
 
     border: 1px solid black;
     border-radius: 4px;
-    background-color: #440a44;
+    background-color: $background-color1;
 
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: $text-font;
     font-size: 16px;
     font-weight: 5;
-    color: #a6b9db;
+    color: $off-text-color1;
     font-style: none;
     text-decoration: none;
 }
@@ -238,15 +260,15 @@ main{
 .cycle-button:hover{
     font-size: 20px;
     font-weight: 6;
-    color: #5f94f0;
-    background-color: #5f0c5f;
+    color: $off-text-color1 + 101010;
+    background-color: $background-color2;
     height: 24px; /* Quirk found when leaving this unspecified */
 }
 
 .dates-text{
-    font-family: 'Courier New', Courier, monospace;
+    font-family: $text-font;
     font-size: 25px;
-    color: black;
+    color: $main-color;
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -258,17 +280,19 @@ main{
 .authors{
     margin: 0px 10px;
     font-family: fantasy;
-    color: #440a44;
+    color: $main-color;
     font-size: 16px;
     font-weight: 5;
 }
 
 html{
-    background-color: #dccbf0
+    color: $main-color;
+    background-color: $background-color;
 }
 
 footer::before{
-    content: "\A9  ";
+    color: $main-color;
+    content: "\A9  "; /* Copyright Symbol */
 }
 
 /* Footer End */
@@ -280,7 +304,7 @@ footer::before{
     display: inline-block;
     width: 400px;
     height: 500px;
-    border: 3px solid black;
+    border: 3px solid $border-color;
 }
 
 .event-name{
@@ -301,9 +325,9 @@ footer::before{
 }
 
 .year-disp{
-    display: flex;
-    justify-content: center;
+    @extend %flex_box;
     font-size: 25px;
+    color: $main-color;
 }
 .hidden{
 	display: none;
