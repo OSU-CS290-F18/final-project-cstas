@@ -103,7 +103,7 @@ function addEvent()
 	}
 	var someTime = time1.getTime();
 	var title = document.getElementById('post-title-input').value;
-	urlRequest();	
+	urlRequest(someMonth, someDay, someYear, someTime);	
 	//creating div for insertion
 	var eventDiv = document.createElement('div');
  	eventDiv.classList.add('post');
@@ -151,7 +151,7 @@ function addEvent()
 /*
  * Sets the URL for a new event.
  */
-function urlRequest()
+function urlRequest(someMonth, someDay, someYear, someTime)
 {
 	var request = new XMLHttpRequest();
 	var requestUrl = '/event/' + someMonth + '/' + someDay + '/' + someYear + '/' + someTime;
