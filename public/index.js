@@ -50,7 +50,9 @@ function deleteElem(j){
         j.stopPropagation();                                            //sends and stops propogation
     }
 }
-
+/*
+ * Verifies all fields have been filled in the add Event Button before pushing each of the variables.
+ */
 function checkCreate()
 {
 	var title = document.getElementById('post-title-input').value;
@@ -72,13 +74,17 @@ function checkCreate()
 	}
 	closeModal();
 }
-
+/*
+ * Opens the Modal for the add Event Button.
+ */
 function openModal()
 {
 	document.getElementById("add-button").classList.remove('hidden');
 	document.getElementById("modal-backdrop").classList.remove('hidden');
 }
-
+/*
+ * Adds an event after doing some variable manipulation for the URL, calls the functions to open and close modal inbetween.
+ */
 function addEvent()
 {
 	openModal();
@@ -138,9 +144,11 @@ function addEvent()
 		Function should align to grid properly, TODO
 	*/
 	
-	closeModal();
+	//closeModal();
 }
-
+/*
+ * Sets the URL for a new event.
+ */
 function urlRequest()
 {
 	var request = new XMLHttpRequest();
@@ -157,7 +165,9 @@ function urlRequest()
 	});
 	request.send(body);
 }
-
+/*
+ * Closes the MODAL and clears each of the fields.
+ */
 function closeModal() 
 {
 	//reset all the inputs
