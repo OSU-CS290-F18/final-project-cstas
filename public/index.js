@@ -79,8 +79,10 @@ function checkCreate()
  */
 function openModal()
 {
-	document.getElementById("add-button").classList.remove('hidden');
-	document.getElementById("modal-backdrop").classList.remove('hidden');
+	rm = document.getElementById("add-button");
+	rm.classList.remove('hidden');
+	rm = document.getElementById("modal-backdrop");
+	rm.classList.remove('hidden');
 }
 /*
  * Adds an event after doing some variable manipulation for the URL, calls the functions to open and close modal inbetween.
