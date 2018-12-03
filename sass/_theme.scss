@@ -1,0 +1,43 @@
+/*
+ Represents all the fonts and styles for My Cloud Calendar
+ Tristan Hilbert
+ 12/2/2018
+ */
+
+$text-font: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+$header-font: Arial, Helvetica, san-serif; 
+$mono: 'Courier New', Courier, monospace;
+$main-color: #230523;
+$header-color: #FFFFFF;
+$off-text-color:  #e47637;
+$off-text-color1: #a6b9db;
+$off-text-color1-highlight: #b6c9eb;
+$border-color: #5f2a5f;
+$text-size: 16px;
+
+$gridbox-color: unquote('#d87cd033');
+$gridbox-color-on: unquote('#d87dd099');
+
+$background-color: #eadff7;
+$background-color1: #440a44;
+$background-color2: #5f2a5f;
+$background-color3: #9e5604;
+$background-color-shade: unquote('#e5bedd44');
+
+%flex_box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+%main_container{
+    @extend %flex_box;
+    height: 1000px;
+    max-width: 100%;
+    align-items: baseline;
+    min-width: 240px;
+}
+
+.hidden{
+    display: none;
+}

@@ -1,0 +1,121 @@
+/*
+ Tristan Hilbert
+ 11/26/18
+ Posting Styles
+*/
+
+@import "theme";
+
+
+%border{
+    border: 2px solid $border-color;
+    border-radius: 8px 8px;
+    background-color: $background-color-shade;
+}
+.full-container{
+    @extend %main_container;
+    margin: 12px 0px;
+}
+
+.single-event-container{
+    @extend %border;
+    width: 20%;
+    min-width: 128px;
+    min-height: 240px;
+    
+    box-shadow: 10px 10px 50px 2px grey;
+}
+
+.single-event-container:hover{
+    margin: 2px;
+    box-shadow: 5px 5px 25px 1px grey;
+}
+
+.event-detail{
+
+    @extend %border;
+    border-width: 0.5px;
+    border-color: $off-text-color1;
+    border-radius: 3px 1px;
+    
+    font-family: $text-font;
+    color: $off-text-color;
+    font-size: ($text-size * 3) / 2;
+
+    @extend %flex_box;
+    justify-content: initial;
+    margin: 0px 2px;
+}
+
+.event-name{
+    font-size: $text-size * 2;
+    margin: 0px 0px $text-size * 2 0px;
+
+    width: auto;
+
+    border: none;   
+    border-radius: 0px;
+
+    background-color: transparent;
+}
+
+
+.deleteButton{
+    @extend %border;
+    @extend %flex_box;
+    background-color: $background-color3;
+    border-color: $background-color3;
+    width: 50%;
+    font-family: $text-font;
+    font-size: $text-size;
+    font-weight: 6;
+    color: $off-text-color1;
+    margin: 4px 4px 0px 4px;
+}
+
+@media only screen and (max-width: 1000px){
+    .deleteButton{
+        font-size: 0.8 * $text-size;
+    }
+
+    .deleteButton:hover{
+        font-size: 0.875 * $text-size;
+    }
+}
+
+@media only screen and (max-width: 801px){
+    .deleteButton{
+        width: 90%;
+    }
+}
+
+.deleteButton:hover{
+    color: $off-text-color1-highlight;
+    font-size: 1.2 * $text-size;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.shade_0{
+    background-color: #bee5d544;
+}
+
+.shade_1{
+    background-color: #bec1e544;
+}
+
+.shade_2{
+    background-color: #dfe5be44;
+}
+
+.shade_3{
+   background-color: #e5bec144;
+}
+
+.shade_4{
+    background-color: #e4bee544;
+}
+
+.shade_5{
+    background-color: #bee0e544;
+}

@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="/compiled/modal.css">
+
+<!--- Add button stuff--->
+<button type="button" class="addButton"><i class="fa fa-plus"></i></button>
+
+<div id="modalBackdrop" class="hidden"></div>
+<div id="addModal" class="hidden">
+    <form class="modal-dialog">        
+        
+        <div class="modal-header">
+            <h3>Create New Event</h3>
+            <button type="button" id="modal-close" class="modal-hide-button">&times;</button>
+        </div>
+        
+        <div class="modal-body">
+            <div class="eventInput">
+                <label>Title</label>
+                <input type="text" placeholder="Title" id="eventTitle"></input>
+            </div>
+        
+            <div class="eventInput">
+                <label>Time</label>
+                <input type="time" placeholder="time" id="eventTime">
+            </div>
+
+            <div class="eventInput">
+                <label >Start Date</label>
+                <input type='date' placeholder="Start Date" id="eventDate">
+            
+            </div>
+
+            <div class="eventInput">
+                <label for="post-repeat-input">Repeated?</label>
+                <div class='repeatRadio'>
+                    <input type="radio" name='repeatCheck' class="postRepeatInput" value="week"> Weekly
+                    <input type="radio" name='repeatCheck' class="postRepeatInput" value='day'> Daily
+                    <input type="radio" name='repeatCheck' class="postRepeatInput" value='never' checked> Never
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" id="modal-cancel" class="modal-cancel-button action-button">Cancel</button>
+            <button type="button" id="modal-accept" class="actionButton">Create Event</button>
+        </div>
+
+    </form>
+</div>

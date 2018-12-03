@@ -52,6 +52,7 @@ custom_handles.attach_custom_handles(handlebars);
 app.engine("handlebars", exphbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
 app.use(express.static('public'));
+app.use("/compiled", express.static('compiled')) /* For Compiled Stylsheets */
 app.use(bodyParser.json());
 
 /*
@@ -137,9 +138,6 @@ function renderCalendar(week, year, month, res, next){
     	}
     });
 }
-
-
-
 
 /*
  * For any non recognized address sends 404

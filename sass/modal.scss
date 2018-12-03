@@ -1,0 +1,64 @@
+/*
+ Modal Modular Stylesheet
+ Tristan Hilbert
+ 12/2/2018
+
+*/
+
+@import "theme";
+
+%bounding-box{
+    border: 1px solid $border-color;
+    border-radius: 1px 1px;
+}
+
+.hidden{
+    display: none;
+}
+
+#modal-backdrop{
+    @extend %bounding-box;
+    background-color: $background-color2;
+}
+
+
+.addButton{
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    height: 60px;
+    width: 60px;
+    border: none;
+    border-radius: 30px;
+    font-size: 36px;
+    background-color: #f67811;
+    color: #fff;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.fa-plus{
+    color: white;
+    font-size: 30px;
+}
+
+
+#modalBackdrop {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+#addModal{
+    color: #fff;
+    justify-self: center;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1010;
+}

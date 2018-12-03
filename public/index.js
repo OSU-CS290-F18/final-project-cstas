@@ -139,10 +139,27 @@ if(addButton){addButton.addEventListener('click', openModal);}
 var addAccept = document.querySelector('.actionButton');
 if(addAccept){addAccept.addEventListener('click', checkCreate);}
 
-var addCancel = document.querySelector(".modalCancelButton");
-var addHide = document.querySelector(".modalHideButton");
-if(addHide){addHide.addEventListener('click', closeModal);}
-if(addCancel){addCancel.addEventListener('click', closeModal);}
+var addCancel = document.querySelector(".modal-cancel-button");
+if(addCancel){
+    if(addCancel.length){
+        for(var i = 0; i < addCancel.length; i ++){
+            addCancel[i].addEventListener('click', closeModal);
+        }
+    }else{
+        addCancel.addEventListener('click', closeModal);
+    }
+}
+var addHide = document.querySelector(".modal-hide-button");
+console.log(addHide);
+if(addHide){
+    if(addHide.length){
+        for(var i = 0; i < addHide.length; i ++){
+            addHide[i].addEventListener('click', closeModal);
+        }
+    }else{
+        addHide.addEventListener('click', closeModal);
+    }
+}
 
 var grids = document.querySelector(".columns");
 if(grids){grids.addEventListener('click', startSend);}

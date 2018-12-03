@@ -4,7 +4,9 @@
   "description": "Node.js backend for Group 3, CSTAs, final project for CS 290",
   "main": "server.js",
   "scripts": {
-    "test": "index"
+    "test": "index",
+    "prestart": "npm run style",
+    "style": "node-sass -q -r ./sass/ -o ./compiled/"
   },
   "repository": {
     "type": "git",
@@ -29,6 +31,7 @@
     "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
     "handlebars": "^4.0.12",
-    "mongodb": "^3.1.10"
+    "mongodb": "^3.1.10",
+    "node-sass": "^4.10.0"
   }
 }

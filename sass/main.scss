@@ -1,0 +1,146 @@
+/*
+ * Tristan Hilbert
+ * 11/6/18
+ * Style Sheet for index.html
+ *
+ */
+
+/* Environment Variables And good old Sass Stuff. */
+@import 'theme';
+
+
+/* End of Environment Variables */
+
+/* Header */
+
+.month-button{
+   font-size: 4 * $text-size;
+   margin: 0px 4 * $text-size 0px $text-size;
+
+   color: $header-color;
+}
+
+.month-button:hover{
+    color: $off-text-color;
+}
+
+.clicked-month{
+    color: grey;
+}
+
+.bar{
+    @extend %flex_box;
+    min-width: 240px;
+    height: 120px;
+}
+
+header{
+    border-radius: 10px;
+    background-color: $background-color1;
+    min-width: 240px;
+}
+
+h1{
+    font-family: $text-font;
+    font-size: 4.5 * $text-size;
+    color: $header-color;
+}
+
+@media only screen and (max-width: 900px){
+    h1{
+        font-size: 3 * $text-size;
+    }
+
+    .bar{
+        height: 90px;
+    }
+}
+
+@media only screen and (max-width: 750px){
+    h1{
+        font-size: 2 * $text-size;
+    }
+
+    .month-button{
+        font-size: 2 * $text-size;
+        margin: 0px 2 * $text-size 0px 0.75 * $text-size;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    h1{
+        font-size: 1.5 * $text-size;
+    }
+
+    .bar{
+        height: 60px;
+    }
+
+    .month-button{
+        font-size: 1.5 * $text-size;
+        margin: 0px 1.5 * $text-size 0px 0.5 * $text-size;
+    }
+}
+
+/* Header End */
+
+/* Months List Bar */
+/* Main */
+main{
+    min-width: 940px;
+    background-color: $background-color;
+}
+/* Month Lists Bar */
+.month-container{
+    background-color: $background-color2;
+    height: 60px;
+    
+}
+
+.uilist{
+    list-style-type: none;
+    display: inline-block;
+}
+
+.list-month{
+    display: inline-block;
+    margin: 0px 20px;
+}
+
+.month{
+    font-family: $text-font;
+    color: $off-text-color;
+    font-size: 16px;
+}
+
+.month:hover{
+    color: $text-font;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+/* End Month List Bar */
+
+/* Footer */
+
+.authors{
+    margin: 0px 10px;
+    font-family: fantasy;
+    color: $main-color;
+    font-size: 16px;
+    font-weight: 5;
+}
+
+html{
+    color: $main-color;
+    background-color: $background-color;
+}
+
+footer::before{
+    color: $main-color;
+    content: "\A9  "; /* Copyright Symbol */
+}
+
+/* Footer End */
+

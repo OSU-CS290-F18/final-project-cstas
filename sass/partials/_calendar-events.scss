@@ -1,0 +1,43 @@
+/*
+ Tristan Hilbert
+ 12/3/2018
+ Calendar Events Stuff for Calendar App
+*/
+
+/*Calendar Events*/
+
+.event-container{
+    justify-self: center;
+    display: inline-block;
+    width: 400px;
+    height: 500px;
+    border: 3px solid $border-color;
+}
+
+.event-name{
+    display: block;
+    text-align: center;
+    font-size: 20px;
+
+}
+
+.requestVar{
+    visibility: hidden;
+}
+
+.bigNum{
+    padding: 8px;
+    font-size: 25px;
+    font-weight: 300;
+}
+
+.year-disp{
+    @extend %flex_box;
+    font-size: 25px;
+    color: $main-color;
+}
+.hidden{
+	display: none;
+}
+
+/* Calendar Events End */
