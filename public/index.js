@@ -120,10 +120,15 @@ function urlRequest(title, month, date, year, time, repeat, timeBack){
 /*
  *  closes modal by hiding the elements, also resets our form
  */
-function closeModal(){
-    document.getElementById('modalForm').reset();
-	document.getElementById("addModal").classList.add('hidden');
-    document.getElementById("modalBackdrop").classList.add('hidden');
+function closeModal() 
+{
+	//reset all the inputs
+	eventTitle.value = '';
+	eventTime.value = '';
+	eventDate.value = '';
+	//add div to hidden
+	document.getElementById("modalBackdrop").classList.add("hidden");
+	document.getElementById("addModal").classList.add("hidden");
 }
 
 
