@@ -38,7 +38,7 @@ function deleteElem(j){
         request.setRequestHeader('Content-Type', 'application/json');   
         
         var bodyObj = {};
-        bodyObj["name"] = String(j.target.getAttribute('name'));        //sets up body object with attribute variables from button
+        bodyObj["name"] = String(j.target.getAttribute("name"));        //sets up body object with attribute variables from button
         bodyObj['day'] = String(j.target.getAttribute('day'));
         
         var body = JSON.stringify(bodyObj);                             
@@ -68,9 +68,8 @@ function checkCreate()
     var date = document.getElementById('eventDate').value;
     var repeat = document.querySelector('.postRepeatInput:checked').getAttribute('value');
 
-    if (!title || !time || !date || !repeat) 
-	{
-  		alert("You must fill in all of the fields!");                   //if any are empty alearts user
+    if (!title || !time || !date || !repeat){
+  		  alert("You must fill in all of the fields!");                   //if any are empty alearts user
         return;
     } 
 
@@ -145,4 +144,3 @@ if(grids){grids.addEventListener('click', startSend);}
 
 var deleteButton = document.querySelector(".deleteButton");
 if(deleteButton){deleteButton.addEventListener('click', deleteElem);}
-
