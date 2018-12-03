@@ -53,24 +53,22 @@ function deleteElem(j){
 
 function checkCreate()
 {
-	var title = document.getElementById('post-title-input').value;
-	var time1 = document.getElementById('post-time1-input').value;
-  	var time2 = document.getElementById('post-time2-input').value;
+    var title = document.getElementById('eventTitle').value;
+    var time = document.getElementById('eventTime').value;
+    var date = document.getElementById('eventDate').value;
+    var repeat = document.querySelector('.postRepeatInput:checked').getAttribute('value');
 
-  	if (!title || !time1 || !time2) 
+    console.log(title);
+    console.log(time);
+    console.log(date);
+    console.log(repeat);
+
+  	if (!title || !time || !date || !repeat) 
 	{
   		alert("You must fill in all of the fields!");
-  	} 
-	else
-	{
-    		allPosts.push({
-      		title: title,
-      		time1: time1,
-      		time2: time2,
-      		repeat: repeat
-    		})
-	};
-	closeModal();
+        return;
+    } 
+   
 }
 
 function openModal()
@@ -82,74 +80,23 @@ function openModal()
 function addEvent()
 {
 	openModal();
-	//info for the url.
-	var time1 = document.getElementById('post-time1-input').value;
-	var time2 = document.getElementById('post-time2-input').value;
-  	var repeat = document.querySelector('#post-repeat-input input:checked').value;
-	var someMonth = time1.getMonth();
-	var someDay = time1.getDate();
-	var someYear = time1.getFullYear();
-	if(repeat)
-	{
-		someYear = 0;
-		time1.getFullYear() = 0;
-	}
-	var someTime = time1.getTime();
-	var title = document.getElementById('post-title-input').value;
-	urlRequest();	
-	//creating div for insertion
-	var eventDiv = document.createElement('div');
- 	eventDiv.classList.add('post');
- 	eventDiv.setAttribute('data-title', title);
- 	eventDiv.setAttribute('data-time1', time1);
- 	eventDiv.setAttribute('data-time2', time2);
- 	eventDiv.setAttribute('data-repeat', repeat);
-	//Create inner event-contents div and add to event div
-	var eventContentsDiv = document.createElement('div');
-	eventContentsDiv.classList.add('event-contents');
-	eventDiv.appendChild(eventContentsDiv);
-	//create post-info-container div and add to post-contents
-	var eventInfoContainerDiv = document.createElement('div');
-  	eventInfoContainerDiv.classList.add('event-info-container');
-	eventContentsDiv.appendChild(eventInfoContainerDiv);
- 
-  	var eventLink = document.createElement('a');
-  	eventLink.classList.add('post-title');
-  	eventLink.href = '#';
-  	eventLink.textContent = title;
-  	eventInfoContainerDiv.appendChild(eventLink);
-	
-	var spaceText1 = document.createTextNode(' ');
-	postInfoContainerDiv.appendChild(spaceText1);
+  
+    
 
-  	var eventtime1span = document.createElement('span');
-  	eventtime1span.classList.add('post-time1');
-  	eventtime1span.textContent = time1.toString();
-  	eventInfoContainerDiv.appendChild(eventtime1span);
 
-	var spaceText2 = document.createTextNode(' ');
-	postInfoContainerDiv.appendChild(spaceText2);
-
-	var eventtime2span = document.createElement('span');
-  	eventtime2span.classList.add('post-time2');
-  	eventtime2span.textContent = time2.toString();
-  	eventInfoContainerDiv.appendChild(eventtime2span);
-	//add the new post element into DOM
-	/*
-		Function should align to grid properly, TODO
-	*/
-	
+    urlRequest(title, month, day, year, time)
+    
 	closeModal();
 }
 
-function urlRequest()
+function urlRequest(title, month, day, year, time)
 {
 	var request = new XMLHttpRequest();
-	var requestUrl = '/event/' + someMonth + '/' + someDay + '/' + someYear + '/' + someTime;
+	var requestUrl = '/event/' + month + '/' + day + '/' + year;
 	request.open('POST', requestUrl);
 	var bodyObj = {
-	    title: title,
-	    day: someDay
+        "title": title,
+        "time12": time
 	};
 	var body = JSON.stringify(bodyObj);
 	request.setRequestHeader('Content-Type', 'application/json');
@@ -177,7 +124,7 @@ function closeModal()
 var addButton = document.querySelector(".addButton");
 if(addButton){addButton.addEventListener('click', addEvent);}
 					 
-var addAccept = document.querySelector('.addAccept');
+var addAccept = document.querySelector('.actionButton');
 if(addAccept){addAccept.addEventListener('click', checkCreate);}
 
 var addCancel = document.querySelector(".modal-cancel");
