@@ -47,7 +47,6 @@ header{
 h1{
     font-family: $text-font;
     font-size: 4.5 * $text-size;
-    color: $header-color;
 }
 
 @media only screen and (max-width: 900px){
@@ -86,19 +85,23 @@ h1{
     }
 }
 
+.headline{
+    color: $header-color;
+    text-decoration: none;
+}
 /* Header End */
 
 /* Months List Bar */
 /* Main */
 main{
-    min-width: 940px;
     background-color: $background-color;
 }
 /* Month Lists Bar */
 .month-container{
     background-color: $background-color2;
     height: 60px;
-    
+
+    border-radius: 10px;
 }
 
 .uilist{
@@ -107,20 +110,27 @@ main{
 }
 
 .list-month{
-    display: inline-block;
+    display: inline-flex;
     margin: 0px 20px;
+    min-width: 2em;
+    background-color: $background-color-shade;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
 }
 
 .month{
     font-family: $text-font;
     color: $off-text-color;
     font-size: 16px;
+    text-decoration: none;
 }
 
 .month:hover{
     color: $text-font;
     cursor: pointer;
     font-weight: bold;
+    text-decoration: underline;
 }
 
 
