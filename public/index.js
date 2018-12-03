@@ -69,6 +69,10 @@ function checkCreate()
 	{
   		alert("You must fill in all of the fields!");
 	}
+	else
+	{
+		addEvent();
+	}
 }
 /*
  * Opens the Modal for the add Event Button.
@@ -83,9 +87,8 @@ function openModal()
  */
 function addEvent()
 {
-	openModal();
-  urlRequest(title, month, day, year, time);
-  closeModal();
+  	urlRequest(title, month, day, year, time);
+  	closeModal();
 }
 /*
  * Closes the MODAL and clears each of the fields.
@@ -106,7 +109,7 @@ function closeModal()
 
 //======================================== Button setup =============================================//
 var addButton = document.querySelector(".add-Button");
-if(addButton){addButton.addEventListener('click', addEvent);}
+if(addButton){addButton.addEventListener('click', openModal);}
 					 
 var addAccept = document.querySelector('.actionButton');
 if(addAccept){addAccept.addEventListener('click', checkCreate);}
