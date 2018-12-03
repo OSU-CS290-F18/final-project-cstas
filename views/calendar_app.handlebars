@@ -1,20 +1,23 @@
 <!-- Main Calendar Page -->
 <!--- Button --->
 
-<button type="button" id="add-button"><i class="button"></i></button>
-    <div id="modal-backdrop" class="hidden"></div>
-    <div id="add-button" class="hidden">
-        <div class="modal-dialog">
-            <div class="modal-header">
-                <h3>Create New Event</h3>
-                <button type="button" id="modal-close" class="modal-hide-button">&times;</button>
-            </div>
+<button type="button" class="addButton"><i class="fa fa-plus"></i></button>
+
+<div id="modalBackdrop" class="hidden"></div>
+<div id="addModal" class="hidden">
+    <div class="modal-dialog">
+            
+        <div class="modal-header">
+            <h3>Create New Event</h3>
+            <button type="button" id="modal-close" class="modal-hide-button">&times;</button>
+        </div>
+        
         <div class="modal-body">
             <div class="post-input-element">
                 <label for="post-title-input">Title</label>
                 <input type="text" placeholder="Title" id="post-title-input"></input>
             </div>
-          
+        
             <div class="post-input-element">
                 <label for="post-time1-input">Start Time</label>
                 <input type="text" placeholder="Month DD, YYYY HH:MM:SS" id="post-time1-input">
@@ -22,14 +25,13 @@
 
             <div class="post-input-element">
                 <label for="post-time2-input">End Time</label>
-                <input type="text" placeholder="Month DD, YYYY HH:MM:SS"" id="post-time2-input">
+                <input type="text" placeholder="Month DD, YYYY HH:MM:SS" id="post-time2-input">
             </div>
 
             <div class="post-input-element">
                 <label for="post-repeat-input">Repeated Weekly</label>
                 <input type="checkbox" id="post-repeat-input">
             </div>
-
         </div>
 
         <div class="modal-footer">
@@ -37,8 +39,8 @@
             <button type="button" id="modal-accept" class="action-button">Create Event</button>
         </div>
 
-        </div>
     </div>
+</div>
 
 <aside>
         <!-- This could be an aside if necessary-->
