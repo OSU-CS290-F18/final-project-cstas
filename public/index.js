@@ -96,9 +96,9 @@ function addEvent()
 function closeModal() 
 {
 	//reset all the inputs
-	document.getElementById("post-title-input").value = "";
-	document.getElementById("post-time1-input").value = "";
-	document.getElementById("post-time2-input").value = "";
+	eventTitle.value = '';
+	eventTime.value = '';
+	eventDate.value = '';
 	//add div to hidden
 	document.getElementById("modalBackdrop").classList.add("hidden");
 	document.getElementById("addModal").classList.add("hidden");
