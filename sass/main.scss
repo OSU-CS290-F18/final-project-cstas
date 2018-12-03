@@ -12,6 +12,32 @@
 /* End of Environment Variables */
 
 /* Header */
+
+.month-button{
+   font-size: 4 * $text-size;
+   position: fixed;
+   left: 36px;
+   top: 36px;
+
+   color: $header-color;
+}
+
+.month-button:hover{
+    color: $off-text-color;
+}
+
+.clicked-month{
+    color: grey;
+}
+
+@media only screen and (max-width: 400px){
+    .month-button{
+        font-size: $text-size;
+        left: 6px;
+        right: 6px;
+    }
+}
+
 .bar{
     @extend %flex_box;
     min-width: 900px;
