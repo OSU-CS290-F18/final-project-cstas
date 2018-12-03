@@ -15,9 +15,7 @@
 
 .month-button{
    font-size: 4 * $text-size;
-   position: fixed;
-   left: 36px;
-   top: 36px;
+   margin: 0px 4 * $text-size 0px $text-size;
 
    color: $header-color;
 }
@@ -30,31 +28,58 @@
     color: grey;
 }
 
-@media only screen and (max-width: 400px){
-    .month-button{
-        font-size: $text-size;
-        left: 6px;
-        right: 6px;
-    }
-}
-
 .bar{
     @extend %flex_box;
-    min-width: 900px;
+    min-width: 240px;
     height: 120px;
-    border-radius: 10px;
 }
 
-.header{
+header{
+    border-radius: 10px;
     background-color: $background-color1;
-    min-width: 940px;
-    height: 120px;
+    min-width: 240px;
 }
 
 h1{
     font-family: $text-font;
-    font-size: 72px;
+    font-size: 4.5 * $text-size;
     color: $header-color;
+}
+
+@media only screen and (max-width: 900px){
+    h1{
+        font-size: 3 * $text-size;
+    }
+
+    .bar{
+        height: 90px;
+    }
+}
+
+@media only screen and (max-width: 750px){
+    h1{
+        font-size: 2 * $text-size;
+    }
+
+    .month-button{
+        font-size: 2 * $text-size;
+        margin: 0px 2 * $text-size 0px 0.75 * $text-size;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    h1{
+        font-size: 1.5 * $text-size;
+    }
+
+    .bar{
+        height: 60px;
+    }
+
+    .month-button{
+        font-size: 1.5 * $text-size;
+        margin: 0px 1.5 * $text-size 0px 0.5 * $text-size;
+    }
 }
 
 /* Header End */
