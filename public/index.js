@@ -68,6 +68,7 @@ function checkCreate()
   	if (!title || !time || !date || !repeat) 
 	{
   		alert("You must fill in all of the fields!");
+	}
 }
 /*
  * Opens the Modal for the add Event Button.
