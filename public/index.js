@@ -69,25 +69,26 @@ function checkCreate()
 	{
   		alert("You must fill in all of the fields!");
 	}
+	else
+	{
+		addEvent();
+	}
 }
 /*
  * Opens the Modal for the add Event Button.
  */
 function openModal()
 {
-	var rm = document.getElementById("add-button");
-	rm.classList.remove('hidden');
-	rm = document.getElementById("modal-backdrop");
-	rm.classList.remove('hidden');
+	document.getElementById("modalBackdrop").classList.remove("hidden");
+	document.getElementById("addModal").classList.remove("hidden");
 }
 /*
  * Adds an event after doing some variable manipulation for the URL, calls the functions to open and close modal inbetween.
  */
 function addEvent()
 {
-	openModal();
-  urlRequest(title, month, day, year, time);
-  closeModal();
+  	urlRequest(title, month, day, year, time);
+  	closeModal();
 }
 /*
  * Closes the MODAL and clears each of the fields.
@@ -101,19 +102,19 @@ function closeModal()
   	var checkrepeat = document.querySelector('#post-repeat-input input[checked]');
  	checkrepeat.checked = true;
 	//add div to hidden
-	document.getElementById("add-button").classList.add('hidden');
-	document.getElementById("modal-backdrop").classList.add('hidden');
+	document.getElementById("modalBackdrop").classList.add("hidden");
+	document.getElementById("addModal").classList.add("hidden");
 }
 
 
 //======================================== Button setup =============================================//
 var addButton = document.querySelector(".add-Button");
-if(addButton){addButton.addEventListener('click', addEvent);}
+if(addButton){addButton.addEventListener('click', openModal);}
 					 
 var addAccept = document.querySelector('.actionButton');
 if(addAccept){addAccept.addEventListener('click', checkCreate);}
 
-var addCancel = document.querySelector(".modal-cancel");
+var addCancel = document.querySelector(".modal-close");
 if(addCancel){addCancel.addEventListener('click', closeModal);}
 
 var grids = document.querySelector(".columns");
