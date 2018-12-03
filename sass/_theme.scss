@@ -21,6 +21,7 @@ $gridbox-color-on: unquote('#d87dd099');
 $background-color: #eadff7;
 $background-color1: #440a44;
 $background-color2: #5f2a5f;
+$background-color3: #9e5604;
 $background-color-shade: unquote('#e5bedd44');
 
 %flex_box{
@@ -34,4 +35,5 @@ $background-color-shade: unquote('#e5bedd44');
     height: 1000px;
     max-width: 100%;
     align-items: baseline;
+    min-width: 240px;
 }

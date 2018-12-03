@@ -26,6 +26,11 @@
     box-shadow: 10px 10px 50px 2px grey;
 }
 
+.single-event-container:hover{
+    margin: 2px;
+    box-shadow: 5px 5px 25px 1px grey;
+}
+
 .event-detail{
 
     @extend %border;
@@ -37,7 +42,8 @@
     color: $off-text-color;
     font-size: ($text-size * 3) / 2;
 
-    display: flex;
+    @extend %flex_box;
+    justify-content: initial;
     margin: 0px 2px;
 }
 
@@ -51,6 +57,43 @@
     border-radius: 0px;
 
     background-color: transparent;
+}
+
+
+.deleteButton{
+    @extend %border;
+    @extend %flex_box;
+    background-color: $background-color3;
+    border-color: $background-color3;
+    width: 50%;
+    font-family: $text-font;
+    font-size: $text-size;
+    font-weight: 6;
+    color: $off-text-color1;
+    margin: 4px 4px 0px 4px;
+}
+
+@media only screen and (max-width: 1000px){
+    .deleteButton{
+        font-size: 0.8 * $text-size;
+    }
+
+    .deleteButton:hover{
+        font-size: 0.875 * $text-size;
+    }
+}
+
+@media only screen and (max-width: 801px){
+    .deleteButton{
+        width: 90%;
+    }
+}
+
+.deleteButton:hover{
+    color: $off-text-color1-highlight;
+    font-size: 1.2 * $text-size;
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 .shade_0{

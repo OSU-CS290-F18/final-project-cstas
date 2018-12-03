@@ -1,0 +1,162 @@
+/*
+ Tristan Hilbert
+ 12/2/2018
+ Style Sheet for Main Calendar App
+*/
+
+/* Compiled at server StartUp. Should not be public files! */
+@import "theme";
+@import "partials/calendar-events";
+@import "partials/cycle-buttons";
+
+/* Aside */
+
+/* App Container and Unordered lists*/
+
+.container{
+    @extend %flex_box;
+    min-width: 1400px;
+    min-height: 1000px;
+    max-width: 100%;
+    margin: 0px 20px;
+    padding: 0px;
+
+    align-items: initial;
+}
+
+.inner-div{
+    display: block;
+    width: 100%;
+}
+
+.button_housing{
+    @extend %flex_box;
+    justify-content: center;
+    padding: 15px;
+}
+
+/* Day Lists Bar */
+.day-container{
+    height: 40px;
+}
+
+.list-day{
+    display: inline-block;
+    width: 32px;
+}
+
+#daylist{
+    margin: 0px;
+    white-space: nowrap;
+    padding: 0px;
+}
+
+#initial-split{
+    width: 70px;
+    flex-shrink: 2;
+}
+
+.splitter{
+    white-space: nowrap;
+    content: "";
+    display: inline-flex;
+    height: 18px;
+    width: 63px;
+}
+/* Day Lists Bar End */
+
+/* Collumns */
+.columns{
+    display: flex;
+    justify-content: center;
+    padding: 0px 80px;
+}
+
+.col{
+    height: 800px;
+    width: 100px;
+
+    border: solid $border-color;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-radius: 6px 6px;
+    margin: 0px 0px;
+}
+
+.grid-box{
+    display: block;
+
+    margin: 0px 2px;
+    height: 31.3px;
+    width: 97%;
+
+    background-color: $gridbox-color;
+
+    border: solid $border-color;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-radius: 6px 6px;
+    margin: 0px 0px;
+}
+
+.grid-box:hover{
+    background-color:$gridbox-color-on;
+    cursor: pointer;
+}
+/* Collumns End */
+
+/* Times */
+.times-container{
+    width: 6%;
+    
+}
+
+.tiny{
+    flex-shrink: 2;
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    white-space: nowrap;
+}
+
+.tiny li{
+    padding: 2.5px 0px;
+    margin: 0px 5px 10px 5px;
+}
+
+.time-text{
+    display: inline-block;
+    font-size: 16px;
+    color: $off-text-color;
+}
+
+.AM::after{
+    content: "AM";
+}
+
+.PM::after{
+    content: "PM";
+}
+
+@media only screen and (max-width: 1475px){
+    .AM::after{
+        content: "";
+    }
+    
+    .PM::after{
+        content: "";
+    }
+
+    .container{
+        min-width: 960px;
+    }
+}
+
+/* Times End */
+
+
+

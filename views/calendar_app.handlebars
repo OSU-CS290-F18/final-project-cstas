@@ -2,9 +2,18 @@
 
 
 {{> modal}}
-
+<link href="/compiled/calendar.css" rel="stylesheet">
 <aside>
-        <!-- This could be an aside if necessary-->
+        <!-- Prints the year
+        <div class = "year-disp">{{context.year}}</div> -->
+
+        <!-- Prints next and last buttons -->
+        <div class = "button_housing">
+            <a href="{{context.last}}" class="cycle-button prev_button">&laquo; Prev</a>  
+            <label><span class="dates-text" id="current-Dates">{{context.weekDates.Mon}} &laquo;---{{context.month}} {{context.year}}---&raquo; {{context.weekDates.Sun}}</span></label>
+            <a href="{{context.next}}" class="cycle-button next_button">Next &raquo;</a>
+        </div> 
+        
         <div class="requestVar">{{context.local}}</div>
         <div class="app container">
             <div class="app inner-div" id="cloud-calendar-app">
@@ -34,16 +43,6 @@
                     {{! This will print out the Day Collumns}}
                     {{> day_grid context}}
                 </div>
-
-                <!-- Prints next and last buttons -->
-                <div class = "button_housing">
-                    <a href="{{context.last}}" class="cycle-button prev_button">&laquo; Prev</a>  
-                    <label><span class="dates-text" id="current-Dates">{{context.weekDates.Mon}} &laquo;---{{context.month}}---&raquo; {{context.weekDates.Sun}}</span></label>
-                    <a href="{{context.next}}" class="cycle-button next_button">Next &raquo;</a>
-                </div> 
-
-                <!-- Prints the year -->
-                <div class = "year-disp">{{context.year}}</div>
             
             </div>
         </div>

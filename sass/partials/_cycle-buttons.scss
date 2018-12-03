@@ -1,0 +1,43 @@
+/*
+ Tristan Hilbert
+ Cycle buttons Partial
+ 12/3/2018
+*/
+
+/* Cycle Buttons */
+
+.cycle-button{
+    display: inline-block;
+    padding: 0px 4px;
+    margin: 0px 4px;
+    height: 20px; /* Quirk Found when leaving this unspecified */
+
+    border: 1px solid black;
+    border-radius: 4px;
+    background-color: $background-color1;
+
+    font-family: $text-font;
+    font-size: 16px;
+    font-weight: 5;
+    color: $off-text-color1;
+    font-style: none;
+    text-decoration: none;
+}
+
+.cycle-button:hover{
+    font-size: 20px;
+    font-weight: 6;
+    color: $off-text-color1-highlight;
+    background-color: $background-color2;
+    height: 24px; /* Quirk found when leaving this unspecified */
+}
+
+.dates-text{
+    font-family: $text-font;
+    font-size: 25px;
+    color: $main-color;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* Cycle Button End */
