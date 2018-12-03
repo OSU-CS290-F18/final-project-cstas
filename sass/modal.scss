@@ -1,0 +1,22 @@
+/*
+ Modal Modular Stylesheet
+ Tristan Hilbert
+ 12/2/2018
+
+*/
+
+@import "theme";
+
+%bounding-box{
+    border: 1px solid $border-color;
+    border-radius: 1px 1px;
+}
+
+.hidden{
+    display: none;
+}
+
+#modal-backdrop{
+    @extend %bounding-box;
+    background-color: $background-color2;
+}

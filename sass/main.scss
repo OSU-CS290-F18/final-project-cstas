@@ -6,22 +6,7 @@
  */
 
 /* Environment Variables And good old Sass Stuff. */
-$text-font: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-$header-font: Arial, Helvetica, san-serif; 
-$mono: 'Courier New', Courier, monospace;
-$main-color: #230523;
-$header-color: #FFFFFF;
-$off-text-color:  #e47637;
-$off-text-color1: #a6b9db;
-$border-color: #5f2a5f;
-
-$gridbox-color: #d87cd033;
-$gridbox-color-on: #d87dd099;
-
-$background-color: #d8c4f0;
-$background-color1: #440a44;
-$background-color2: #5f2a5f;
-
+@import 'theme';
 
 %flex_box{
     display: flex;
@@ -30,6 +15,7 @@ $background-color2: #5f2a5f;
 }
 
 
+/* End of Environment Variables */
 
 /* Header */
 .bar{
@@ -260,7 +246,7 @@ main{
 .cycle-button:hover{
     font-size: 20px;
     font-weight: 6;
-    color: $off-text-color1 + 101010;
+    color: $off-text-color1-highlight;
     background-color: $background-color2;
     height: 24px; /* Quirk found when leaving this unspecified */
 }
