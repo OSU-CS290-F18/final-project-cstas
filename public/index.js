@@ -33,7 +33,7 @@ function deleteElem(j){
         request.setRequestHeader('Content-Type', 'application/json');   
         
         var bodyObj = {};
-        bodyObj["name"] = String(j.target.getAttribute('name'));        //sets up body object with attribute variables from button
+        bodyObj["name"] = String(j.target.getAttribute("name"));        //sets up body object with attribute variables from button
         bodyObj['day'] = String(j.target.getAttribute('day'));
         
         var body = JSON.stringify(bodyObj);                             
@@ -50,7 +50,9 @@ function deleteElem(j){
         j.stopPropagation();                                            //sends and stops propogation
     }
 }
-
+/*
+ * Verifies all fields have been filled in the add Event Button before pushing each of the variables.
+ */
 function checkCreate()
 {
     var title = document.getElementById('eventTitle').value;
@@ -66,46 +68,29 @@ function checkCreate()
   	if (!title || !time || !date || !repeat) 
 	{
   		alert("You must fill in all of the fields!");
-        return;
-    } 
-   
 }
-
+/*
+ * Opens the Modal for the add Event Button.
+ */
 function openModal()
 {
-	document.getElementById("addModal").classList.remove('hidden');
-	document.getElementById("modalBackdrop").classList.remove('hidden');
+	var rm = document.getElementById("add-button");
+	rm.classList.remove('hidden');
+	rm = document.getElementById("modal-backdrop");
+	rm.classList.remove('hidden');
 }
-
+/*
+ * Adds an event after doing some variable manipulation for the URL, calls the functions to open and close modal inbetween.
+ */
 function addEvent()
 {
 	openModal();
-  
-    
-
-
-    urlRequest(title, month, day, year, time)
-    
-	closeModal();
+  urlRequest(title, month, day, year, time);
+  closeModal();
 }
-
-function urlRequest(title, month, day, year, time)
-{
-	var request = new XMLHttpRequest();
-	var requestUrl = '/event/' + month + '/' + day + '/' + year;
-	request.open('POST', requestUrl);
-	var bodyObj = {
-        "title": title,
-        "time12": time
-	};
-	var body = JSON.stringify(bodyObj);
-	request.setRequestHeader('Content-Type', 'application/json');
-	request.addEventListener('load', function(event){
-		if(!event.target.status == 200){alert('bad');}
-	});
-	request.send(body);
-}
-
+/*
+ * Closes the MODAL and clears each of the fields.
+ */
 function closeModal() 
 {
 	//reset all the inputs
@@ -121,7 +106,7 @@ function closeModal()
 
 
 //======================================== Button setup =============================================//
-var addButton = document.querySelector(".addButton");
+var addButton = document.querySelector(".add-Button");
 if(addButton){addButton.addEventListener('click', addEvent);}
 					 
 var addAccept = document.querySelector('.actionButton');
