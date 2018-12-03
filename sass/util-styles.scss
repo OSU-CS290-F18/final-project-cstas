@@ -1,0 +1,17 @@
+/*
+ * Tristan Hilbert
+ * 11/21/2018
+ * Utility Styles for 404 and other erroneous web-pages
+ */
+
+ @import "theme";
+
+ .single-headline-container{
+    @extend %main_container;
+}
+
+.single-headline{
+    display: block;
+    font-size: $text-size * 9;
+    font-weight: 6;
+}
