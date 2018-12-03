@@ -99,8 +99,6 @@ function closeModal()
 	document.getElementById("post-title-input").value = "";
 	document.getElementById("post-time1-input").value = "";
 	document.getElementById("post-time2-input").value = "";
-  	var checkrepeat = document.querySelector('#post-repeat-input input[checked]');
- 	checkrepeat.checked = true;
 	//add div to hidden
 	document.getElementById("modalBackdrop").classList.add("hidden");
 	document.getElementById("addModal").classList.add("hidden");
@@ -114,7 +112,7 @@ if(addButton){addButton.addEventListener('click', openModal);}
 var addAccept = document.querySelector('.actionButton');
 if(addAccept){addAccept.addEventListener('click', checkCreate);}
 
-var addCancel = document.querySelector(".modal-close");
+var addCancel = document.querySelector(".modal-hide-button");
 if(addCancel){addCancel.addEventListener('click', closeModal);}
 
 var grids = document.querySelector(".columns");
