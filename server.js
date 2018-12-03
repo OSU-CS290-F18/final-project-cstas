@@ -41,7 +41,7 @@ MongoClient.connect(mongoUrl, function (err, client){
 		console.log("Server listening on port", port);	    //starts server conditional on the DB
 	});
 
-	debug_Database();                                       //adds our debug events
+	//debug_Database();                                       //adds our debug events
 });
 
 //Set up handlebars helper functions
@@ -154,12 +154,30 @@ app.get("*", function(req, res, next){
 app.post('/event/:month/:date/:year/:time', function(req, res, next){
 	var month = parseInt(req.params.month);
     var date = parseInt(req.params.date);
-    var day = req.body.day;                         //pulls vars from request
+    var repeat = req.body.repeat;                   //pulls vars from request
 	var year = parseInt(req.params.year);
 	var time = parseInt(req.params.time);
 	var time12Num = time;
-	var name = req.body.name;
+    var name = req.body.name;
     var amPm;
+    timeBack = req.body.timeBack;
+
+    var tempDate = new Date(year, month, date);     //sets day of the week
+    var day = tempDate.getDay();
+    if(day == 0){day = 6;}
+    else{day -= 1;}
+    day = context['day'][day];                     
+    if(repeat == 'week'){
+        month = 15;                                 //sets up repeat if week
+        date = 0;
+        year = 0;
+    }
+    if(repeat == 'day'){
+        month = 15;                                 //sets up repeat if day
+        date = 0;
+        day = 'All';
+        year = 0;
+    }
     
 	if(time12Num >= 12){
 		amPm = 'PM';                                //converts 24 hour time to 12 hour time with notation
@@ -171,13 +189,14 @@ app.post('/event/:month/:date/:year/:time', function(req, res, next){
 		if(time12Num == 0)
 			time12Num = 12;
 	}
-
-	var time12 = (time12Num < 10 ? '0' : '') + time12Num + ':00 ' + amPm;       
+	var time12 = (time12Num < 10 ? '0' : '') + time12Num + ':' + timeBack + ' ' + amPm;       
     
     console.log('========================= inserting ========================');
     console.log("*** ", name, " ***");                                              //inserts the element and logs it
 	db.collection('event').insertOne({'name': name, 'time': time, 'time12': time12, 'month': month, 'year': year, 'day': day, 'date': date});
-	res.status(200).send('Post added successfully');
+    res.status(200).send('Post added successfully');
+    console.log('========================= done =============================');
+    
 });
 
 /* 
