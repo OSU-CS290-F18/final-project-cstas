@@ -28,6 +28,10 @@
     color: grey;
 }
 
+.clicked-month:hover{
+    color: $off-text-color1;
+}
+
 .bar{
     @extend %flex_box;
     min-width: 240px;
