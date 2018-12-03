@@ -112,7 +112,10 @@ if(addButton){addButton.addEventListener('click', openModal);}
 var addAccept = document.querySelector('.actionButton');
 if(addAccept){addAccept.addEventListener('click', checkCreate);}
 
-var addCancel = document.querySelector(".modal-hide-button");
+var addClose = document.querySelector(".modal-hide-button");
+if(addClose){addClose.addEventListener('click', closeModal);}
+
+var addCancel = document.querySelector(".modal-hide-button-action");
 if(addCancel){addCancel.addEventListener('click', closeModal);}
 
 var grids = document.querySelector(".columns");
