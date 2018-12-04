@@ -53,7 +53,7 @@ information does not go with it.
 
 ## How to use My Calendar
 
-[link to website](#)
+[link to website](#http://calendar.mine.bz/)
 
 The files should include a index.html and any other necessary process to set up the service
 
