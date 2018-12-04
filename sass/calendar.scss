@@ -30,12 +30,12 @@
 }
 
 .app{
-    width: 100%;
+    //width: 900px;
+      width: 100%;
 }
 /* Day Lists Bar */
 .uilist{
     display: flex;
-    width: 100%;
     flex-flow: row nowrap;
     justify-content: space-between;
 }
@@ -64,6 +64,8 @@
 /* Collumns */
 .columns{
     display: flex;
+   // flex-flow: row nowrap;
+    justify-content: space-between;
 }
 
 .col{
@@ -76,7 +78,8 @@
     border-bottom-width: 1px;
     border-left-width: 1px;
     border-radius: 6px 6px;
-    margin: 0px 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 .day-column{
