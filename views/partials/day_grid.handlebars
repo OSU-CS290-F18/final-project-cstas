@@ -1,11 +1,11 @@
 <!-- Individual Day-Grid Column HTML template-->
 <!-- For each day-->
 {{#each day}}
-    <div class="day-column {{this}} col">
+    <div class="slot day-column {{this}} col">
         <!-- for each time-->
         {{#each ../times}}
             <!-- sets value to 24hr time, date to the date, and day to the weekday for passing-->
-            <div class="grid-box" id="{{../this}}_{{this.time}}" value="{{timeConvert this.time}}" date="{{getDay ../../weekDates ../this}}" day="{{../this}}">
+            <div class="slot grid-box" id="{{../this}}_{{this.time}}" value="{{timeConvert this.time}}" date="{{getDay ../../weekDates ../this}}" day="{{../this}}">
                 <!-- if an event exists prints the Event marker-->
                 {{ifEvent ../this this ../../event}}
             </div>

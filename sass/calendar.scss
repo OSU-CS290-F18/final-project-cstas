@@ -9,22 +9,19 @@
 @import "partials/calendar-events";
 @import "partials/cycle-buttons";
 
+
 /* Aside */
 
 /* App Container and Unordered lists*/
 
 .container{
     @extend %main_container;
-    margin: 0px 20px;
     padding: 0px;
-
+    display: flex;
     align-items: initial;
+    justify-content: center;
 }
 
-.inner-div{
-    display: block;
-    width: 100%;
-}
 
 .button_housing{
     @extend %flex_box;
@@ -32,46 +29,46 @@
     padding: 15px;
 }
 
+.app{
+    width: 100%;
+}
 /* Day Lists Bar */
-.day-container{
-    height: 40px;
+.uilist{
+    display: flex;
+    width: 100%;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+/* Day Lists Bar End */
+
+.slot{
+    min-width: 21px;
+    max-width: 160px;
+    height: 33.4px;
+}
+
+.initial-slot{
+    min-width: 80px;
+    max-width: 100px;
 }
 
 .list-day{
-    display: inline-block;
-    min-width: 32px;
+    @extend %flex_box;
+    max-width: 320px;
 }
 
-#daylist{
-    margin: 0px;
-    white-space: nowrap;
-    padding: 0px;
+.list-day-block{
+    width: 100%;
 }
-
-#initial-split{
-    width: 70px;
-    flex-shrink: 2;
-}
-
-.splitter{
-    white-space: nowrap;
-    content: "";
-    display: inline-flex;
-    height: 18px;
-    width: 63px;
-}
-/* Day Lists Bar End */
 
 /* Collumns */
 .columns{
     display: flex;
-    justify-content: center;
-    padding: 0px 80px;
 }
 
 .col{
-    height: 800px;
-    width: 100px;
+    display: inline-flex;
+    height: 36px * 24;
 
     border: solid $border-color;
     border-top-width: 1px;
@@ -82,20 +79,20 @@
     margin: 0px 0px;
 }
 
+.day-column{
+    display: flex;
+    flex-flow: row wrap;
+}
+
 .grid-box{
-    display: block;
+    @extend %flex_box;
+    font-family: $text-font;
+    font-size: $text-size;
 
-    margin: 0px 2px;
-    height: 31.3px;
-    width: 97%;
-
+    width: 100%;
     background-color: $gridbox-color;
 
-    border: solid $border-color;
-    border-top-width: 1px;
-    border-right-width: 1px;
-    border-bottom-width: 1px;
-    border-left-width: 1px;
+    border: 1px solid $border-color;
     border-radius: 6px 6px;
     margin: 0px 0px;
 }
@@ -108,7 +105,7 @@
 
 /* Times */
 .times-container{
-    display: flex;
+    display: inline-flex;
     
 }
 
@@ -137,20 +134,6 @@
 
 .PM::after{
     content: "PM";
-}
-
-@media only screen and (max-width: 1475px){
-    .AM::after{
-        content: "";
-    }
-    
-    .PM::after{
-        content: "";
-    }
-
-    .container{
-        min-width: 960px;
-    }
 }
 
 /* Times End */
