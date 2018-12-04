@@ -37,6 +37,34 @@
     color: $off-text-color1-highlight;
 }
 
+@media only screen and (max-width: 725px){
+    .addButton{
+        right: 1.5 * $text-size;
+        bottom: 1.5 * $text-size;
+        font-size: 3 * $text-size;
+        width: 3 * $text-size;
+    }
+    
+    .addButton:hover{
+        font-size: 3.25 * $text-size;
+        width: 3.25 * $text-size + 1.25;
+    }
+}
+
+@media only screen and (max-width: 400px){
+    .addButton{
+        right: $text-size;
+        bottom: $text-size;
+        font-size: 2 * $text-size;
+        width: 2 * $text-size;
+    }
+    
+    .addButton:hover{
+        font-size: 2.25 * $text-size;
+        width: 2.25 * $text-size + 1.25;
+    }
+}
+
 #modalBackdrop {
     position: fixed;
     top: 0;
