@@ -94,7 +94,12 @@ git checkout -h     --> Reveals all erroneous commands for checking out branches
 
 ## How the project works
 calendar.mine.bz is hosted from a virtual machine server that contains the files for the project necessary to run.
---more--
+
+Server Side: 
+
+Client Side: 
+
+SASS: 
 
 ## The audience of the project
 
