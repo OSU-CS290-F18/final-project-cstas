@@ -29,7 +29,7 @@ function toggleMonths(event){
  *  Grabs date information from the the clicked target if it is a grid box and redirects the user to the proper event page 
  */
 function startSend(j){
-    if(j.target.getAttribute('class') == 'grid-box'){ 
+    if(j.target.getAttribute("class").indexOf('grid-box') != -1){ 
         var time = String(j.target.getAttribute("value"));
         var date = String(j.target.getAttribute('date'));                           //grabs vars from the html
         var day = String(j.target.getAttribute('day'));
