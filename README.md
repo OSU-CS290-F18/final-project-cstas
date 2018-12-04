@@ -1,6 +1,6 @@
 The Computer Science & Electrical and Computer Engineering TAs Introduce
 
-## My Cloud Calendar (Name may be changed)
+## My Cloud Calendar
 
 This readme will introduce:
 *	What this project is, The overall goal of this project
@@ -55,19 +55,19 @@ information does not go with it.
 
 [link to website](http://calendar.mine.bz/)
 
-The files should include a index.html and any other necessary process to set up the service
+The Calendar has a grid interfare of buttons that when pressed will link the user to another page displaying the event if there is one, the button on the bottom right-hand corner allows the user to add an event. This information is saved in the server's database so that if the user refreshes the page the information will still be present. 
+
+The three lines button near the title at the top of the page display the months, these can also be clicked to navigate to that years' month. The next and prev buttons will also shift the calendar by one week backwards and forwards respectively.
 
 ## Calendar_Form
 The calendar form represents the Mogal the user inputs details about a new event to be created.
 At the bare minimum each event requires:
 *   A Name for the Event
-*   A Location for the Event
-*   A Starting time...
-*   An Ending time...
+*   A Starting time
+*   A Date
+*   A selection of whether or not the event repeats.
 *   *Note Time of event must not be illegal, or might span over multiple days*
 
-*   Any other Notes for the event
-*   *An optional stretch goal would be to add repetitions, but that is not required for the first version*
 
 
 ## How to add to the project
@@ -93,15 +93,14 @@ git checkout -h     --> Reveals all erroneous commands for checking out branches
 [More on Branching](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
 
 ## How the project works
-Check on ##Calendar_Form
-
-**Browser Based**
+calendar.mine.bz is hosted from a virtual machine server that contains the files for the project necessary to run.
+--more--
 
 ## The audience of the project
 
-Any individual with a need for organization.
+Any individual with a need for organization. A group of people who want to add their schedules to the same thing and be able to read it relatively clearly.
 Computer Science 290 Web Development Fall 2018 Class
 
 ## The goal of the project
 
-A working block calendar with little to no user error in the most secure and efficient code.
+A working block calendar with little to no user error in the most secure and efficient code. One that works very simply.
