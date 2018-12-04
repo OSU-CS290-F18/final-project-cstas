@@ -15,25 +15,25 @@
         <div class="requestVar">{{context.local}}</div>
         <div class="app container">
             <div class="app inner-div" id="cloud-calendar-app">
-                <div class="bar day-container" id="daylist-container">
-                    <ul class="uilist" id="daylist">
+                <!--<div class="bar day-container" id="daylist-container">-->
+                    <div class="uilist" id="daylist">
                         <!-- Prints the list of days --> 
-                        <li class= "list-day splitter" id="initial-split"><span class="day blank-day"></span></li>
-                        <li class="list-day mon"><span class="day mon">Mon</span> <span class='bigNum'>{{context.weekDates.Mon}}</span></li>
-                        <li class= "list-day splitter"><span class="day blank-day"></span></li>
-                        <li class="list-day tue"><span class="day tue">Tue</span> <span class='bigNum'>{{context.weekDates.Tue}}</span></li>
-                        <li class= "list-day splitter"><span class="day blank-day"></span></li>
-                        <li class="list-day wed"><span class="day wed">Wed</span> <span class='bigNum'>{{context.weekDates.Wed}}</span></li>
-                        <li class= "list-day splitter"><span class="day blank-day"></span></li>
-                        <li class="list-day thu"><span class="day thu">Thu</span> <span class='bigNum'>{{context.weekDates.Thu}}</span></li>
-                        <li class= "list-day splitter"><span class="day blank-day"></span></li>
-                        <li class="list-day fri"><span class="day fri">Fri</span> <span class='bigNum'>{{context.weekDates.Fri}}</span></li>
-                        <li class= "list-day splitter"><span class="day blank-day"></span></li>
-                        <li class="list-day sat"><span class="day sat">Sat</span> <span class='bigNum'>{{context.weekDates.Sat}}</span></li>
-                        <li class= "list-day splitter"><span class="day blank-day"></span></li>
-                        <li class="list-day sun"><span class="day sun">Sun</span> <span class='bigNum'>{{context.weekDates.Sun}}</span></li>
-                    </ul>
-                </div>
+                        <div class= "slot list-day splitter initial-slot" id="empty-cell"><span class="day blank-day"></span></div>
+                        <div class="slot list-day mon"><div class= "list-day-block">Mon <span class='bigNum'>{{context.weekDates.Mon}}</span></div></div>
+                        <!--<li class= "list-day splitter"><span class="day blank-day"></span></li>-->
+                        <div class="slot list-day tue"><div class= "list-day-block">Tue <span class='bigNum'>{{context.weekDates.Tue}}</span></div></div>
+                        <!--<li class= "list-day splitter"><span class="day blank-day"></span></li>-->
+                        <div class="slot list-day wed"><div class= "list-day-block">Wed <span class='bigNum'>{{context.weekDates.Wed}}</span></div></div>
+                        <!--<li class= "list-day splitter"><span class="day blank-day"></span></li>-->
+                        <div class="slot list-day thu"><div class= "list-day-block">Thu <span class='bigNum'>{{context.weekDates.Thu}}</span></div></div>
+                        <!--<li class= "list-day splitter"><span class="day blank-day"></span></li>-->
+                        <div class="slot list-day fri"><div class= "list-day-block">Fri <span class='bigNum'>{{context.weekDates.Fri}}</span></div></div>
+                        <!--<li class= "list-day splitter"><span class="day blank-day"></span></li>-->
+                        <div class="slot list-day sat"><div class= "list-day-block">Sat <span class='bigNum'>{{context.weekDates.Sat}}</span></div></div>
+                        <!--<li class= "list-day splitter"><span class="day blank-day"></span></li>-->
+                        <div class="slot list-day sun"><div class= "list-day-block">Sun <span class='bigNum'>{{context.weekDates.Sun}}</span></div></div>
+                    </div>
+                <!--</div>-->
                 <div class="columns" id="collumn-chart">
                     <!-- Prints the list of times along the left column -->
                     {{> time_list context}}
