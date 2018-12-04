@@ -12,10 +12,6 @@
     border-radius: 1px 1px;
 }
 
-.hidden{
-    display: none;
-}
-
 #modal-backdrop{
     @extend %bounding-box;
     background-color: $background-color2;
@@ -23,24 +19,23 @@
 
 
 .addButton{
+    @extend %flex_box;
     position: fixed;
-    right: 30px;
-    bottom: 30px;
-    height: 60px;
-    width: 60px;
+    right: 2 * $text-size;
+    bottom: 2 * $text-size;
     border: none;
-    border-radius: 30px;
-    font-size: 36px;
-    background-color: #f67811;
-    color: #fff;
-    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.25);
+    font-size: 4 * $text-size;
+    width: 4 * $text-size + 2;
+    color: $off-text-color1;
+    background-color: $background-color3;
+    border-radius: 15px;
 }
 
-.fa-plus{
-    color: white;
-    font-size: 30px;
+.addButton:hover{
+    font-size: 4.25 * $text-size;
+    width: 4.25 * $text-size + 2.5;
+    color: $off-text-color1-highlight;
 }
-
 
 #modalBackdrop {
     position: fixed;
