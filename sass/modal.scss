@@ -8,12 +8,13 @@
 @import "theme";
 
 %bounding-box{
+    @extend %flex_box;
     border: 1px solid $border-color;
-    border-radius: 1px 1px;
+    border-radius: 10px;
 }
 
-#modalBackdrop{
-    @extend %bounding-box;
+.modal-backdrop{
+    @extend %flex_box;
     background-color: $background-color2;
     background-color: $gridbox-color-on;
     z-index: 10;
@@ -25,31 +26,38 @@
 }
 
 .modal-container{
-    @extend %flex_box;
+    @extend %bounding-box;
     color: #fff;
-    align-items: center;
-    justify-self: center;
-    position: fixed;
-    right: 40%;
-    top: 30%;
     z-index: 110;
-    background-color: $background-color1;
-    border-radius: 10px;
+    background-color: $background-color2;
     padding: $text-size * 0.5;
+
+    width: 34%;
+    min-width: 240px;
+    height: 45%;
 }
 
+@media only screen and (max-width: 960px){
+    .modal-container{
+        height: 40%;
+    }
+}
 
 .addButton{
     @extend %flex_box;
+
     position: fixed;
     right: 2 * $text-size;
     bottom: 2 * $text-size;
+
     border: none;
     font-size: 4 * $text-size;
-    width: 4 * $text-size + 2;
-    color: $off-text-color1;
     background-color: $background-color3;
+    color: $off-text-color1;
+
     border-radius: 15px;
+
+    width: 4 * $text-size + 2;
     z-index: 100;
 }
 
@@ -87,13 +95,77 @@
     }
 }
 
-.modal-dialogue{
+.modal-dialog{
+    @extend %flex_box;
+    width: 100%;
+    height: 100%;
+}
+
+.block{
+    display: block;
+}
+
+.modal-piece{
     font-family: $text-font;
-    font-size: $text-size;
+    font-size: 1.5 * $text-size;
 }
 
 h3{
-    font-size: 1.5 * $text-size;
+    background-color: $background-color-shade;
+    border-radius: 15px;
+    font-size: 2.25 * $text-size;
+    font-family: $header-font;
+    padding: 0px 0.25 * $text-size 0px 0.25 * $text-size;
+    margin: 5px 0px 10px 0px;
+}
+
+@media only screen and (max-width: 960px){
+    .modal-piece{
+        font-family: $text-font;
+        font-size: $text-size;
+    }
+
+    h3{
+        font-size: 1.5 * $text-size;
+        font-family: $header-font;
+    }
+}
+
+%modal-button{
+    @extend %flex_box;
+    background-color: $background-color3;
+    border-color: $background-color3;
+    border-radius: 5px;
+    font-family: $text-font;
+    font-size: $text-size;
+    font-weight: 8;
+    color: $off-text-color1;
+}
+
+%modal-button-hover{
+    color: $off-text-color1-highlight;
+    font-size: 1.2 * $text-size;
+    cursor: pointer;
+}
+
+#modal-close{
+    width: 1em;
+    @extend %modal-button;
+    box-shadow: 2px 2px 1px 1px grey;
+}
+
+#modal-close:hover{
+    @extend %modal-button-hover;
+    box-shadow: 0.5px 0.5px 1px 1px grey;
+}
+
+.modal-sub{
+    @extend %modal-button;
+    display: inline-flex;
+}
+
+.modal-sub:hover{
+    @extend %modal-button-hover;
 }
 
 .hidden{ /* Required due to flext box overwrite */

@@ -3,48 +3,47 @@
 <!--- Add button stuff--->
 <div class="addButton"><i class="far fa-plus-square"></i></div>
 
-<div id="modalBackdrop" class="hidden"></div>
-<div id="addModal" class="hidden">
-    <div class="modal-container">
+<div id="modalBackdrop" class="modal-backdrop hidden">
+    <div id="addModal" class="modal-container hidden">
         <form class="modal-dialog">        
-            
-            <div class="modal-header">
-                <button type="button" id="modal-close" class="modal-hide-button">&times;</button>
-                <h3>Create New Event</h3>
-            </div>
-            
-            <div class="modal-body">
-                <div class="eventInput">
-                    <label>Title</label>
-                    <input type="text" placeholder="Title" id="eventTitle"></input>
+            <div class="block">
+                <div class="modal-header modal-piece">
+                    <div id="modal-close" class="modal-hide-button">&times;</div>
+                    <h3>Create New Event</h3>
                 </div>
-            
-                <div class="eventInput">
-                    <label>Time</label>
-                    <input type="time" placeholder="time" id="eventTime">
-                </div>
-
-                <div class="eventInput">
-                    <label >Start Date</label>
-                    <input type='date' placeholder="Start Date" id="eventDate">
                 
-                </div>
+                <div class="modal-body modal-piece">
+                    <div class="eventInput">
+                        <label>Title</label>
+                        <input type="text" placeholder="Title" id="eventTitle"></input>
+                    </div>
+                
+                    <div class="eventInput">
+                        <label>Time</label>
+                        <input type="time" placeholder="time" id="eventTime">
+                    </div>
 
-                <div class="eventInput">
-                    <label for="post-repeat-input">Repeated?</label>
-                    <div class='repeatRadio'>
-                        <input type="radio" name='repeatCheck' class="postRepeatInput" value="week"> Weekly
-                        <input type="radio" name='repeatCheck' class="postRepeatInput" value='day'> Daily
-                        <input type="radio" name='repeatCheck' class="postRepeatInput" value='never' checked> Never
+                    <div class="eventInput">
+                        <label >Start Date</label>
+                        <input type='date' placeholder="Start Date" id="eventDate">
+                    
+                    </div>
+
+                    <div class="eventInput">
+                        <label for="post-repeat-input">Repeated?</label>
+                        <div class='repeatRadio'>
+                            <input type="radio" name='repeatCheck' class="postRepeatInput" value="week"> Weekly
+                            <input type="radio" name='repeatCheck' class="postRepeatInput" value='day'> Daily
+                            <input type="radio" name='repeatCheck' class="postRepeatInput" value='never' checked> Never
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="modal-footer">
-                <button type="button" id="modal-cancel" class="modal-hide-button action-button">Cancel</button>
-                <button type="button" id="modal-accept" class="actionButton">Create Event</button>
+                <div class="modal-footer modal-piece">
+                    <div id="modal-cancel" class="modal-sub modal-hide-button action-button">Cancel</div>
+                    <div id="modal-accept" class="modal-sub actionButton">Create Event</div>
+                </div>
             </div>
-
         </form>
     </div>
 </div>
