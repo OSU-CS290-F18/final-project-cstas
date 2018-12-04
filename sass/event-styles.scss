@@ -19,11 +19,16 @@
 
 .single-event-container{
     @extend %border;
-    width: 20%;
-    min-width: 128px;
+    min-width: 240px;
     min-height: 240px;
     
     box-shadow: 10px 10px 50px 2px grey;
+}
+
+@media only screen and (max-width: 400px){
+    .single-event-container{
+        width: 90%;
+    }
 }
 
 .single-event-container:hover{

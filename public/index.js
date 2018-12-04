@@ -5,6 +5,23 @@
  *  Created: 11/20/2018
  */
 
+//=================================================Open Months Bar=========================================//
+function toggleMonths(event){
+    console.log(event)
+    if(event.target.getAttribute('class').indexOf("clicked-month") == -1){
+        event.target.classList.add("clicked-month");
+        var list = document.querySelectorAll(".month-container");
+        for(var i = 0; i < list.length; i ++){
+            list[i].classList.remove("hidden");
+        }
+    }else{
+        event.target.classList.remove("clicked-month");
+        var list = document.querySelectorAll(".month-container");
+        for(var i = 0; i < list.length; i ++){
+            list[i].classList.add("hidden");
+        }
+    }
+}
 
 //=================================================loads events=========================================//
 
@@ -133,36 +150,28 @@ function closeModal()
 
 
 //======================================== Button setup =============================================//
+/* Add Buttons */
 var addButton = document.querySelector(".addButton");
 if(addButton){addButton.addEventListener('click', openModal);}
-					 
+
+/* Accept Buttons */
 var addAccept = document.querySelector('.actionButton');
 if(addAccept){addAccept.addEventListener('click', checkCreate);}
 
-var addCancel = document.querySelector(".modal-cancel-button");
-if(addCancel){
-    if(addCancel.length){
-        for(var i = 0; i < addCancel.length; i ++){
-            addCancel[i].addEventListener('click', closeModal);
-        }
-    }else{
-        addCancel.addEventListener('click', closeModal);
-    }
-}
-var addHide = document.querySelector(".modal-hide-button");
-console.log(addHide);
+/* Hide Buttons */
+var addHide = document.querySelectorAll(".modal-hide-button");
 if(addHide){
-    if(addHide.length){
-        for(var i = 0; i < addHide.length; i ++){
-            addHide[i].addEventListener('click', closeModal);
-        }
-    }else{
-        addHide.addEventListener('click', closeModal);
+    for(var i = 0; i < addHide.length; i ++){
+        addHide[i].addEventListener('click', closeModal);
     }
 }
 
+/* Calendar Column - Events */
 var grids = document.querySelector(".columns");
 if(grids){grids.addEventListener('click', startSend);}
 
+/* Event Delete */
 var deleteButton = document.querySelector(".deleteButton");
 if(deleteButton){deleteButton.addEventListener('click', deleteElem);}
+
+document.getElementById("month-button0").addEventListener('click', toggleMonths);

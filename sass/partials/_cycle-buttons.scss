@@ -10,14 +10,14 @@
     display: inline-block;
     padding: 0px 4px;
     margin: 0px 4px;
-    height: 20px; /* Quirk Found when leaving this unspecified */
+    //height: 20px; /* Quirk Found when leaving this unspecified */
 
     border: 1px solid black;
     border-radius: 4px;
     background-color: $background-color1;
 
     font-family: $text-font;
-    font-size: 16px;
+    font-size: $text-size;
     font-weight: 5;
     color: $off-text-color1;
     font-style: none;
@@ -25,19 +25,66 @@
 }
 
 .cycle-button:hover{
-    font-size: 20px;
+    font-size: $text-size + 4px;
     font-weight: 6;
     color: $off-text-color1-highlight;
     background-color: $background-color2;
-    height: 24px; /* Quirk found when leaving this unspecified */
+    //height: 24px; /* Quirk found when leaving this unspecified */
+}
+
+@media only screen and (max-width: 700px){
+    .cycle-button{
+        display: inline-block;
+        padding: 0px 2px;
+        margin: 0px 2px;
+    
+        font-family: $text-font;
+        font-size: 0.75*$text-size;
+    }
+    
+    .cycle-button:hover{
+        font-size: (0.75 * $text-size) + 3px;
+    }
+}
+
+@media only screen and (max-width: 480px){
+    .cycle-button{
+        display: inline-block;
+        padding: 0px 1px;
+        margin: 0px 1px;
+    
+        font-family: $text-font;
+        font-size: 0.5*$text-size;
+    }
+    
+    .cycle-button:hover{
+        font-size: (0.5 * $text-size) + 2px;
+    }
 }
 
 .dates-text{
     font-family: $text-font;
-    font-size: 25px;
+    font-size: $text-size * 1.6;
     color: $main-color;
     padding-left: 10px;
     padding-right: 10px;
+}
+
+
+@media only screen and (max-width: 700px){
+    .dates-text{
+        font-size: $text-size * 1.2;
+        padding-left: 7px;
+        padding-right: 7px;
+    }
+}
+
+@media only screen and (max-width: 480px){
+    .dates-text{
+        font-size: $text-size;
+        padding-left: 4px;
+        padding-right: 4px;
+    }
 }
 
 /* Cycle Button End */

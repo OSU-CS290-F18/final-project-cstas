@@ -12,53 +12,90 @@
     border-radius: 1px 1px;
 }
 
-.hidden{
-    display: none;
-}
-
-#modal-backdrop{
+#modalBackdrop{
     @extend %bounding-box;
     background-color: $background-color2;
+    background-color: $gridbox-color-on;
+    z-index: 10;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-container{
+    @extend %flex_box;
+    color: #fff;
+    align-items: center;
+    justify-self: center;
+    position: fixed;
+    right: 40%;
+    top: 30%;
+    z-index: 110;
+    background-color: $background-color1;
+    border-radius: 10px;
+    padding: $text-size * 0.5;
 }
 
 
 .addButton{
+    @extend %flex_box;
     position: fixed;
-    right: 30px;
-    bottom: 30px;
-    height: 60px;
-    width: 60px;
+    right: 2 * $text-size;
+    bottom: 2 * $text-size;
     border: none;
-    border-radius: 30px;
-    font-size: 36px;
-    background-color: #f67811;
-    color: #fff;
-    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.25);
+    font-size: 4 * $text-size;
+    width: 4 * $text-size + 2;
+    color: $off-text-color1;
+    background-color: $background-color3;
+    border-radius: 15px;
+    z-index: 100;
 }
 
-.fa-plus{
-    color: white;
-    font-size: 30px;
+.addButton:hover{
+    font-size: 4.25 * $text-size;
+    width: 4.25 * $text-size + 2.5;
+    color: $off-text-color1-highlight;
 }
 
-
-#modalBackdrop {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    background-color: rgba(0, 0, 0, 0.85);
+@media only screen and (max-width: 725px){
+    .addButton{
+        right: 1.5 * $text-size;
+        bottom: 1.5 * $text-size;
+        font-size: 3 * $text-size;
+        width: 3 * $text-size;
+    }
+    
+    .addButton:hover{
+        font-size: 3.25 * $text-size;
+        width: 3.25 * $text-size + 1.25;
+    }
 }
 
-#addModal{
-    color: #fff;
-    justify-self: center;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 1010;
+@media only screen and (max-width: 400px){
+    .addButton{
+        right: $text-size;
+        bottom: $text-size;
+        font-size: 2 * $text-size;
+        width: 2 * $text-size;
+    }
+    
+    .addButton:hover{
+        font-size: 2.25 * $text-size;
+        width: 2.25 * $text-size + 1.25;
+    }
+}
+
+.modal-dialogue{
+    font-family: $text-font;
+    font-size: $text-size;
+}
+
+h3{
+    font-size: 1.5 * $text-size;
+}
+
+.hidden{ /* Required due to flext box overwrite */
+    display: none;
 }
